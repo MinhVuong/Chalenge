@@ -13,3 +13,19 @@ config = {_id: "davi", members: [{_id: 0, host: "localhost:27017"}, {_id: 1, hos
 rs.initiate(config);
 
 rs.status()
+
+
+//primary
+db.demo.insert({name: "Vuong", age: 22});
+
+db.demo.find().pretty();
+
+// secondary
+rs.slaveOk();
+
+// Failover
+// primary
+db.shutdownServer();
+
+
+
