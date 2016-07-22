@@ -19,7 +19,7 @@ public class InsertDB {
         DBCollection dBCollection = MongoDBHelper.GetDBCollection();
         BasicDBObject bdb = new BasicDBObject();
         bdb.put("name", "vuong");
-        bdb.put("time", "now()");
+        bdb.put("age", "23");
         dBCollection.insert(bdb);
     }
     
