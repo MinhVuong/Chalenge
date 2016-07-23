@@ -17,3 +17,207 @@
  INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27018] 2016-07-23 00:07:01,916 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1050954, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
  INFO [main] 2016-07-23 00:07:16,754 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:15}] to localhost:27017
  INFO [main] 2016-07-23 00:07:48,216 Main.java (line 50) insert db: { "_id" : { "$oid" : "579252c45ad3fc1a18f04720"} , "name" : "vuong" , "age" : "23"}
+ INFO [Thread-0] 2016-07-23 11:34:48,537 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-23 11:34:48,819 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-23 11:34:49,037 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-23 11:34:49,485 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-23 11:34:49,486 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-23 11:34:49,819 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-23 11:34:49,819 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ERROR [main] 2016-07-23 11:34:49,881 Main.java (line 55) Exception at startup: com.mysql.jdbc.Driver
+ INFO [Thread-1] 2016-07-23 11:34:49,966 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
+ INFO [Thread-0] 2016-07-23 11:35:16,359 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-23 11:35:16,647 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-23 11:35:17,099 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-23 11:35:17,162 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-23 11:35:17,162 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-23 11:35:17,334 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-23 11:35:17,334 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27017] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27019] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27018] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ERROR [main] 2016-07-23 11:35:31,553 Main.java (line 55) Exception at startup: com.mysql.jdbc.Driver
+ INFO [Thread-1] 2016-07-23 11:35:31,600 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
+ INFO [Thread-0] 2016-07-23 11:39:17,409 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-23 11:39:17,597 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-23 11:39:17,722 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-23 11:39:17,753 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-23 11:39:17,753 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-23 11:39:17,831 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-23 11:39:17,831 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ERROR [main] 2016-07-23 11:39:17,847 MySQLHelper.java (line 45) Connect MySql fail: com.mysql.jdbc.Driver
+ERROR [main] 2016-07-23 11:39:17,847 Main.java (line 49) Exception at startup: Don't connect to MySQL
+ INFO [Thread-1] 2016-07-23 11:39:17,894 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
+ INFO [Thread-0] 2016-07-23 11:42:38,205 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-23 11:42:38,502 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-23 11:42:38,705 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-23 11:42:38,752 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-23 11:42:38,752 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-23 11:42:38,939 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-23 11:42:38,939 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27017] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27018] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27019] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [Thread-0] 2016-07-23 11:43:08,681 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-23 11:43:08,947 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [main] 2016-07-23 11:43:09,150 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-23 11:43:09,150 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [Thread-0] 2016-07-23 11:43:09,150 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-23 11:43:09,228 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-23 11:43:09,228 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27018] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27017] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27019] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more

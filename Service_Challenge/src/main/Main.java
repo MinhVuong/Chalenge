@@ -8,8 +8,8 @@ import com.vng.jcore.common.LogUtil;
 import esale.frontend.common.EsaleFEConfig;
 import httpservice.WebServer;
 import java.io.File;
-import me.service.controller.InsertDB;
 import me.service.helper.MongoDBHelper;
+import me.service.helper.MySQLHelper;
 import org.apache.log4j.Logger;
 
 /**
@@ -44,10 +44,12 @@ public class Main {
                 logger_.error("Exception at startup: Don't connect to NoSQL MongoDB");
                 System.exit(3);
             }
-            InsertDB insert = new InsertDB();
-            insert.TestInsert();
-            String temp = insert.RetreviewDB();
-            logger_.info("insert db: "+temp);
+            
+            if(!MySQLHelper.StartConnectDatabase()){
+                logger_.error("Exception at startup: Don't connect to MySQL");
+                System.exit(3);
+            }
+            
 
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());

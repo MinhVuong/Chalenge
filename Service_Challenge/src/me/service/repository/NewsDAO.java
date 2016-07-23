@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
  */
 public class NewsDAO {
     private Logger logger = Logger.getLogger(NewsDAO.class);
-    public boolean Insert(News news){
+    public boolean InsertNews(News news){
         try{
             DBCollection dBCollection = MongoDBHelper.GetDBCollection();
             BasicDBObject bdb = new BasicDBObject();

@@ -8,6 +8,7 @@ package me.service.helper;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -15,9 +16,9 @@ import java.sql.SQLException;
  */
 public class MySQLHelper {
     // JDBC driver name and database URL
-
+    private static Logger logger = Logger.getLogger(MySQLHelper.class);
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/support?useUnicode=true&characterEncoding=UTF-8";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/challenge?useUnicode=true&characterEncoding=UTF-8";
 
     //  Database credentials
     static final String USER = "root";
@@ -32,12 +33,17 @@ public class MySQLHelper {
         return instance;
     }
     public static boolean StartConnectDatabase() throws ClassNotFoundException, SQLException{
-        Class.forName(JDBC_DRIVER);
-        instance = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
-        
-        if(instance == null)
+        try{
+            Class.forName(JDBC_DRIVER);
+            instance = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
+
+            if(instance == null)
+                return false;
+            else
+                return true;
+        }catch(Exception ex){
+            logger.error("Connect MySql fail: " +ex.getMessage());
             return false;
-        else
-            return true;
+        }
     }
 }
