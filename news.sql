@@ -4,6 +4,7 @@ USE challenge;
 
 create table `news`(
 	`id_news` int not null auto_increment,
+    `id`	int,
     `content` nvarchar(10000),
     `status` int,
     `time` nvarchar(20),

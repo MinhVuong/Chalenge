@@ -18,15 +18,14 @@ public class InsertDB {
     public void TestInsert(){
         DBCollection dBCollection = MongoDBHelper.GetDBCollection();
         BasicDBObject bdb = new BasicDBObject();
-        bdb.put("name", "vuong");
-        bdb.put("age", "23");
+        bdb.put("id", "2");
+        bdb.put("name", "hien");
         dBCollection.insert(bdb);
     }
     
     public String RetreviewDB(){
         DBCollection dBCollection = MongoDBHelper.GetDBCollection();
         BasicDBObject bdb = new BasicDBObject();
-        bdb.put("name", "vuong");
         DBCursor dbCursor = dBCollection.find(bdb);
         String result="";
         while(dbCursor.hasNext()){

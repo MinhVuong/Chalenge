@@ -20,8 +20,8 @@ public class MySQLNewsDAO {
     public boolean InsertNews(News news){
         try{
             Connection conn = MySQLHelper.getInstance();
-            String sql = "insert into news values('%s',%d, '%s')";
-            sql = String.format(sql, news.getContent(), news.getStatus(), news.getTime());
+            String sql = "insert into news(id, content, status, time) values(%d, '%s',%d, '%s')";
+            sql = String.format(sql, news.getId(), news.getContent(), news.getStatus(), news.getTime());
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);
             return true;

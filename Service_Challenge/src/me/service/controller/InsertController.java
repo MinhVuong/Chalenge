@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
+import me.service.myservice.InsertNews;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,6 +23,7 @@ import org.apache.log4j.Logger;
 public class InsertController extends HttpServlet{
     private static Logger logger = Logger.getLogger(InsertController.class);
     private Gson gson = new Gson();
+    private InsertNews insertS = new InsertNews();
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){
@@ -30,6 +32,9 @@ public class InsertController extends HttpServlet{
             if(size != null){
                 for(int i=0; i<Integer.parseInt(size); i++){
                     News news = new News(++EsaleFEConfig.sizeR, "Noi dung "+EsaleFEConfig.sizeR, 1, TimeHelper.GetTimeCurrent());
+                    if(!insertS.InsertNewsTo2DB(news)){
+                        logger.info("Don't insert record news: "+ gson.toJson(news));
+                    }
                 }
                 resp.setStatus(200);
                 Utils.out("OK", resp);

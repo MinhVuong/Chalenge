@@ -7,6 +7,8 @@ package me.service.repository;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
@@ -43,11 +45,13 @@ public class NewsDAO {
         }
     }
     
-    public static int GetSizeNews(){
+    public static int GetSizeIndexNews(){
         try{
             DBCollection dBCollection = MongoDBHelper.GetDBCollection();
-            int size = (int)dBCollection.count();
-            
+            BasicDBObject sortObject = new BasicDBObject().append("_id", -1);
+            DBCursor cur = dBCollection.find(new BasicDBObject()).sort(sortObject).limit(1);
+            DBObject obj = cur.one();
+            int size = (int)obj.get("id");
             return size;
         }catch(Exception e){
             return 0;

@@ -53,9 +53,12 @@ public class Main {
                 System.exit(3);
             }
             InsertDB insertDB = new InsertDB();
+            //insertDB.TestInsert();
             String result = insertDB.RetreviewDB();
+            
+            
             logger_.info("Object in table: "+result);
-            EsaleFEConfig.sizeR = NewsDAO.GetSizeNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
+            EsaleFEConfig.sizeR = NewsDAO.GetSizeIndexNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
             logger_.info("Size Request: "+EsaleFEConfig.sizeR);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
             ThreadQueue threadQueue = new ThreadQueue();            
