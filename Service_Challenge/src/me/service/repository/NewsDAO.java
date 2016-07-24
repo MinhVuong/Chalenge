@@ -42,4 +42,15 @@ public class NewsDAO {
             return null;
         }
     }
+    
+    public static int GetSizeNews(){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            int size = (int)dBCollection.count();
+            
+            return size;
+        }catch(Exception e){
+            return 0;
+        }
+    }
 }

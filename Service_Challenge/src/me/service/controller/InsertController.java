@@ -6,10 +6,13 @@
 package me.service.controller;
 
 import com.google.gson.Gson;
+import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.common.Utils;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import me.service.helper.TimeHelper;
+import me.service.model.News;
 import org.apache.log4j.Logger;
 
 /**
@@ -25,6 +28,9 @@ public class InsertController extends HttpServlet{
         try {
             String size = req.getParameter("size");
             if(size != null){
+                for(int i=0; i<Integer.parseInt(size); i++){
+                    News news = new News(++EsaleFEConfig.sizeR, "Noi dung "+EsaleFEConfig.sizeR, 1, TimeHelper.GetTimeCurrent());
+                }
                 resp.setStatus(200);
                 Utils.out("OK", resp);
             }

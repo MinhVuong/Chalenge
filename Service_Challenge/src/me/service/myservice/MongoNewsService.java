@@ -17,4 +17,6 @@ public class MongoNewsService {
     public boolean InsertNews(News news){
         return mongoNewsD.InsertNews(news);
     }
+    
+    
 }

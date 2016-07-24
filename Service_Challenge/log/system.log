@@ -1,223 +1,173 @@
- INFO [Thread-0] 2016-07-23 00:06:54,861 WebServer.java (line 44) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 00:06:55,539 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [Thread-0] 2016-07-23 00:06:55,765 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 00:07:01,319 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 00:07:01,320 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [main] 2016-07-23 00:07:01,679 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 00:07:01,683 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27019] 2016-07-23 00:07:01,862 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27019
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27019] 2016-07-23 00:07:01,872 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=6848851, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27019] 2016-07-23 00:07:01,874 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27017] 2016-07-23 00:07:01,897 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:14}] to localhost:27017
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27017] 2016-07-23 00:07:01,899 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1169186, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1}
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27017] 2016-07-23 00:07:01,900 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000001 from replica set primary localhost:27017
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27017] 2016-07-23 00:07:01,900 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27017] 2016-07-23 00:07:01,901 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27018] 2016-07-23 00:07:01,908 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:6}] to localhost:27018
- INFO [cluster-ClusterId{value='579252b55ad3fc1a18f0471f', description='null'}-localhost:27018] 2016-07-23 00:07:01,916 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1050954, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
- INFO [main] 2016-07-23 00:07:16,754 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:15}] to localhost:27017
- INFO [main] 2016-07-23 00:07:48,216 Main.java (line 50) insert db: { "_id" : { "$oid" : "579252c45ad3fc1a18f04720"} , "name" : "vuong" , "age" : "23"}
- INFO [Thread-0] 2016-07-23 11:34:48,537 WebServer.java (line 45) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 11:34:48,819 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [Thread-0] 2016-07-23 11:34:49,037 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 11:34:49,485 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 11:34:49,486 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [main] 2016-07-23 11:34:49,819 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 11:34:49,819 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
-ERROR [main] 2016-07-23 11:34:49,881 Main.java (line 55) Exception at startup: com.mysql.jdbc.Driver
- INFO [Thread-1] 2016-07-23 11:34:49,966 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
- INFO [Thread-0] 2016-07-23 11:35:16,359 WebServer.java (line 45) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 11:35:16,647 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [Thread-0] 2016-07-23 11:35:17,099 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 11:35:17,162 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 11:35:17,162 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [main] 2016-07-23 11:35:17,334 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 11:35:17,334 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
- INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27017] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27019] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f4055ad3fc03fce13080', description='null'}-localhost:27018] 2016-07-23 11:35:18,412 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
-ERROR [main] 2016-07-23 11:35:31,553 Main.java (line 55) Exception at startup: com.mysql.jdbc.Driver
- INFO [Thread-1] 2016-07-23 11:35:31,600 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
- INFO [Thread-0] 2016-07-23 11:39:17,409 WebServer.java (line 45) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 11:39:17,597 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [Thread-0] 2016-07-23 11:39:17,722 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 11:39:17,753 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 11:39:17,753 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [main] 2016-07-23 11:39:17,831 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 11:39:17,831 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
-ERROR [main] 2016-07-23 11:39:17,847 MySQLHelper.java (line 45) Connect MySql fail: com.mysql.jdbc.Driver
-ERROR [main] 2016-07-23 11:39:17,847 Main.java (line 49) Exception at startup: Don't connect to MySQL
- INFO [Thread-1] 2016-07-23 11:39:17,894 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
- INFO [Thread-0] 2016-07-23 11:42:38,205 WebServer.java (line 45) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 11:42:38,502 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [Thread-0] 2016-07-23 11:42:38,705 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 11:42:38,752 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 11:42:38,752 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [main] 2016-07-23 11:42:38,939 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 11:42:38,939 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
- INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27017] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27018] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f5be5ad3fc07b4a0a3ae', description='null'}-localhost:27019] 2016-07-23 11:42:39,970 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [Thread-0] 2016-07-23 11:43:08,681 WebServer.java (line 45) get rest listen_port from zport=6969
- INFO [Thread-0] 2016-07-23 11:43:08,947 Server.java (line 272) jetty-8.1.11.v20130520
- INFO [main] 2016-07-23 11:43:09,150 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
- INFO [main] 2016-07-23 11:43:09,150 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
- INFO [Thread-0] 2016-07-23 11:43:09,150 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
- INFO [main] 2016-07-23 11:43:09,228 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
- INFO [main] 2016-07-23 11:43:09,228 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
- INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27018] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27017] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
- INFO [cluster-ClusterId{value='5792f5dd5ad3fc1738675bec', description='null'}-localhost:27019] 2016-07-23 11:43:10,244 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
-com.mongodb.MongoSocketOpenException: Exception opening socket
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
-	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
-	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:128)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
-	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
-	... 3 more
+ INFO [Thread-0] 2016-07-24 10:28:38,588 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:28:38,989 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:28:39,504 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:28:42,520 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:28:42,521 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:28:42,777 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:28:42,780 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27019] 2016-07-24 10:28:43,070 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:3}] to localhost:27019
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27019] 2016-07-24 10:28:43,072 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1741054, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27019] 2016-07-24 10:28:43,074 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27018] 2016-07-24 10:28:43,077 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:7}] to localhost:27018
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27018] 2016-07-24 10:28:43,079 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1229945, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27017] 2016-07-24 10:28:43,080 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:9}] to localhost:27017
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27017] 2016-07-24 10:28:43,088 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=7635841, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27017] 2016-07-24 10:28:43,089 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27017] 2016-07-24 10:28:43,089 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579435ea5ad3fc15c0caeee3', description='null'}-localhost:27017] 2016-07-24 10:28:43,094 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [main] 2016-07-24 10:28:56,678 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:10}] to localhost:27017
+ INFO [Thread-0] 2016-07-24 10:33:53,166 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:33:53,372 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:33:53,528 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:33:53,544 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:33:53,545 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:33:53,618 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:33:53,619 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,663 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:11}] to localhost:27017
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27018] 2016-07-24 10:33:53,665 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:8}] to localhost:27018
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27019] 2016-07-24 10:33:53,667 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:4}] to localhost:27019
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,669 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=5046634, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27018] 2016-07-24 10:33:53,669 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1393747, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,670 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27019] 2016-07-24 10:33:53,671 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3262475, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,672 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,672 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579437215ad3fc12c40af4ed', description='null'}-localhost:27017] 2016-07-24 10:33:53,675 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [main] 2016-07-24 10:33:53,996 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:12}] to localhost:27017
+ INFO [main] 2016-07-24 10:33:54,007 Main.java (line 55) Size Request: 1
+ INFO [main] 2016-07-24 10:33:54,008 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:33:55,010 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:33:56,010 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:33:57,010 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:33:58,010 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:33:59,011 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:00,011 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:01,011 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:02,012 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:03,012 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:04,012 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:05,012 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:06,013 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:07,013 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:08,014 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:09,014 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:10,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:11,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:12,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:13,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:14,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:15,015 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:16,016 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:17,016 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:18,016 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:19,017 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:20,018 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:21,018 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:22,019 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:23,019 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:24,020 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:25,021 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:26,022 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:27,022 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:28,023 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:29,023 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:30,024 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:31,024 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:32,024 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:33,025 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:34,026 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:35,026 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:36,026 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:37,026 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:38,026 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:34:39,026 ThreadQueue.java (line 22) thread is running...
+ INFO [Thread-0] 2016-07-24 10:35:00,349 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:35:00,571 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:35:00,745 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:35:00,765 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:35:00,766 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:35:00,843 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:35:00,844 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27018] 2016-07-24 10:35:00,888 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:9}] to localhost:27018
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27017] 2016-07-24 10:35:00,889 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:13}] to localhost:27017
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27019] 2016-07-24 10:35:00,889 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:5}] to localhost:27019
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27018] 2016-07-24 10:35:00,891 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2020624, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27017] 2016-07-24 10:35:00,892 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1802223, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27018] 2016-07-24 10:35:00,892 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27019] 2016-07-24 10:35:00,892 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1770612, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27017] 2016-07-24 10:35:00,893 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27017] 2016-07-24 10:35:00,893 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579437645ad3fc178819ee87', description='null'}-localhost:27017] 2016-07-24 10:35:00,895 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [main] 2016-07-24 10:35:01,146 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:14}] to localhost:27017
+ INFO [main] 2016-07-24 10:35:01,156 Main.java (line 55) Size Request: 1
+ INFO [main] 2016-07-24 10:35:01,157 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:36:01,159 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:37:01,161 ThreadQueue.java (line 22) thread is running...
+ INFO [Thread-0] 2016-07-24 10:38:13,714 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:38:13,944 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:38:14,115 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:38:14,135 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:38:14,135 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:38:14,219 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:38:14,220 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27018] 2016-07-24 10:38:14,261 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:10}] to localhost:27018
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27019] 2016-07-24 10:38:14,264 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:6}] to localhost:27019
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27017] 2016-07-24 10:38:14,265 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:15}] to localhost:27017
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27018] 2016-07-24 10:38:14,266 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=4181238, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27019] 2016-07-24 10:38:14,267 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3089231, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27018] 2016-07-24 10:38:14,267 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27017] 2016-07-24 10:38:14,269 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2541175, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27017] 2016-07-24 10:38:14,269 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27017] 2016-07-24 10:38:14,269 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='579438265ad3fc1b28bb1db8', description='null'}-localhost:27017] 2016-07-24 10:38:14,271 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [main] 2016-07-24 10:38:14,594 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:16}] to localhost:27017
+ INFO [main] 2016-07-24 10:38:14,836 Main.java (line 57) Object in table: { "_id" : { "$oid" : "579252c45ad3fc1a18f04720"} , "name" : "vuong" , "age" : "23"}
+ INFO [main] 2016-07-24 10:38:14,841 Main.java (line 59) Size Request: 1
+ INFO [main] 2016-07-24 10:38:14,841 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:39:14,842 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:40:14,843 ThreadQueue.java (line 22) thread is running...
+ INFO [Thread-0] 2016-07-24 10:43:55,149 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:43:55,388 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:43:55,566 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:43:55,583 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:43:55,583 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:43:55,680 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:43:55,681 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27018] 2016-07-24 10:43:55,729 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:11}] to localhost:27018
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27017] 2016-07-24 10:43:55,734 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:17}] to localhost:27017
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27018] 2016-07-24 10:43:55,734 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3838447, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27019] 2016-07-24 10:43:55,734 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27019
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27018] 2016-07-24 10:43:55,735 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27017] 2016-07-24 10:43:55,736 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1431515, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27017] 2016-07-24 10:43:55,736 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27017] 2016-07-24 10:43:55,736 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27017] 2016-07-24 10:43:55,737 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='5794397b5ad3fc152ca0edab', description='null'}-localhost:27019] 2016-07-24 10:43:55,737 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2009540, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [main] 2016-07-24 10:43:56,387 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:18}] to localhost:27017
+ INFO [main] 2016-07-24 10:43:56,717 Main.java (line 58) Object in table: 
+ INFO [main] 2016-07-24 10:43:56,722 Main.java (line 60) Size Request: 0
+ INFO [main] 2016-07-24 10:43:56,723 ThreadQueue.java (line 22) thread is running...
+ INFO [Thread-0] 2016-07-24 10:51:44,905 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-24 10:51:45,129 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-24 10:51:45,316 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-24 10:51:45,379 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-24 10:51:45,379 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-24 10:51:45,465 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-24 10:51:45,466 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,512 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:19}] to localhost:27017
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27019] 2016-07-24 10:51:45,513 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:8}] to localhost:27019
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,515 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1834654, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000002, setVersion=1}
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27019] 2016-07-24 10:51:45,515 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1353925, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,516 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,517 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000002 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,517 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27017] 2016-07-24 10:51:45,517 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27018] 2016-07-24 10:51:45,528 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:12}] to localhost:27018
+ INFO [cluster-ClusterId{value='57943b515ad3fc1b7ce00b48', description='null'}-localhost:27018] 2016-07-24 10:51:45,531 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1074355, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [main] 2016-07-24 10:51:45,873 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:20}] to localhost:27017
+ INFO [main] 2016-07-24 10:51:45,900 Main.java (line 57) Object in table: 
+ INFO [main] 2016-07-24 10:51:45,906 Main.java (line 59) Size Request: 0
+ INFO [main] 2016-07-24 10:51:45,907 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:51:45,907 ThreadQueue.java (line 26) Not Save MySql Empty!!!
+ INFO [main] 2016-07-24 10:52:45,907 ThreadQueue.java (line 22) thread is running...
+ INFO [main] 2016-07-24 10:52:45,907 ThreadQueue.java (line 26) Not Save MySql Empty!!!

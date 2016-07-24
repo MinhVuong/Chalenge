@@ -34,4 +34,15 @@ public class InsertDB {
         }
         return result;
     }
+    public boolean DeleteRow(){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject bdb = new BasicDBObject();
+            bdb.put("name", "vuong");
+            dBCollection.remove(bdb);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
 }

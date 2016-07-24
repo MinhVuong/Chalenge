@@ -34,7 +34,7 @@ public class MongoDBHelper {
             dbCollection = db.getCollection("tabledemo");
             return true;
         }catch(Exception e){
-            logger.info("Error: " + e.getMessage());
+            logger.info("Connect MongoDB Error: " + e.getMessage());
             return false;
         }
     }

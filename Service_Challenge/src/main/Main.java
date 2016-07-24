@@ -8,8 +8,11 @@ import com.vng.jcore.common.LogUtil;
 import esale.frontend.common.EsaleFEConfig;
 import httpservice.WebServer;
 import java.io.File;
+import me.service.controller.InsertDB;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.MySQLHelper;
+import me.service.helper.ThreadQueue;
+import me.service.repository.NewsDAO;
 import org.apache.log4j.Logger;
 
 /**
@@ -49,7 +52,14 @@ public class Main {
                 logger_.error("Exception at startup: Don't connect to MySQL");
                 System.exit(3);
             }
-            
+            InsertDB insertDB = new InsertDB();
+            String result = insertDB.RetreviewDB();
+            logger_.info("Object in table: "+result);
+            EsaleFEConfig.sizeR = NewsDAO.GetSizeNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
+            logger_.info("Size Request: "+EsaleFEConfig.sizeR);
+            // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
+            ThreadQueue threadQueue = new ThreadQueue();            
+            threadQueue.run();
 
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());
