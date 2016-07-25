@@ -9,7 +9,7 @@ package me.service.model;
  *
  * @author Kuti
  */
-public class NotSaveMySql {
+public class NotSaveMySql implements java.io.Serializable{
     private int category;
     private News news;
 

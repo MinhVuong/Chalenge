@@ -5,6 +5,7 @@
  */
 package me.service.helper;
 
+import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.Queue;
 import me.service.model.NotSaveMySql;
@@ -17,30 +18,35 @@ import org.apache.log4j.Logger;
  */
 public class ThreadQueue extends Thread{
     private Logger logger = Logger.getLogger(ThreadQueue.class);
-    public static Queue notSaveMySql = new LinkedList();
+    Gson gson = new Gson();
+    //public static Queue notSaveMySql = new LinkedList();
     public void run(){
         while(true){
             try{
                 logger.info("thread is running...");
+                NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
+                Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
                 if(!notSaveMySql.isEmpty()){
                     if(MySQLHelper.StartConnectDatabase()){
                         Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
-                        NotSaveMySql notSave = (NotSaveMySql)notSaveMySql.poll();       // Get phan tu dau tien trong Queue va xoa luon trong Queue
-                        while(notSave != null){     // Thuc hien cho den khi nao trong Queue het phan tu.
+                        String str = (String)notSaveMySql.poll();
+                        NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);       // Get phan tu dau tien trong Queue va xoa luon trong Queue
+                        while(notSave != null){             // Thuc hien cho den khi nao trong Queue het phan tu.
                             MySqlNewsService mySqlS = new MySqlNewsService();
                             switch(notSave.getCategory()){
                                 case 1:{
                                     if(!mySqlS.InsertNews(notSave.getNews()))       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
-                                        temp.add(notSave);
+                                        temp.add(gson.toJson(notSave));
                                     break;
                                 }
                                 case 2:{
                                     break;
                                 }
                             }
-                            notSave = (NotSaveMySql)notSaveMySql.poll();            // Lay phan tu dau tien cua Queue va xoa luon trong Queue
+                            str = (String)notSaveMySql.poll();
+                            notSave = gson.fromJson(str, NotSaveMySql.class);           // Lay phan tu dau tien cua Queue va xoa luon trong Queue
                         }
-                        notSaveMySql = temp;
+                        notSaveMySqlMemcached.SaveNotSaveMySqlQueue(temp);
                     }else{
                         logger.info("Thread: Don't connect to MySQL Database!!!");
                     }
