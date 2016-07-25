@@ -23,9 +23,8 @@ public class InsertNews {
     MySqlNewsService mysqlS = new MySqlNewsService();
     Gson gson = new Gson();
 
-    public boolean InsertNewsTo2DB(News news) {
+    public boolean InsertNewsTo2DB(News news, NotSaveMySqlMemcached notSaveMySqlMemcached) {
         if (mongoS.InsertNews(news)) {
-            NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
             Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
             
             if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {

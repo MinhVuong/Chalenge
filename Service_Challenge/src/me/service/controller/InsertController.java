@@ -11,6 +11,7 @@ import esale.frontend.common.Utils;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import me.service.helper.NotSaveMySqlMemcached;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
 import me.service.myservice.InsertNews;
@@ -30,9 +31,10 @@ public class InsertController extends HttpServlet{
         try {
             String size = req.getParameter("size");
             if(size != null){
+                NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                 for(int i=0; i<Integer.parseInt(size); i++){
                     News news = new News(++EsaleFEConfig.sizeR, "Noi dung "+EsaleFEConfig.sizeR, 1, TimeHelper.GetTimeCurrent());
-                    if(!insertS.InsertNewsTo2DB(news)){
+                    if(!insertS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
                         logger.info("Don't insert record news: "+ gson.toJson(news));
                     }
                 }
