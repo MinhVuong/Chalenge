@@ -9,6 +9,7 @@ import esale.frontend.common.EsaleFEConfig;
 import httpservice.WebServer;
 import java.io.File;
 import me.service.controller.InsertDB;
+import me.service.helper.MemcacheHelper;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.MySQLHelper;
 import me.service.helper.ThreadQueue;
@@ -50,6 +51,10 @@ public class Main {
             
             if(!MySQLHelper.StartConnectDatabase()){
                 logger_.error("Exception at startup: Don't connect to MySQL");
+                System.exit(3);
+            }
+            if(!MemcacheHelper.ConnectMemcache()){
+                logger_.error("Exception at startup: Don't connect to Memcached");
                 System.exit(3);
             }
             InsertDB insertDB = new InsertDB();

@@ -23,23 +23,27 @@ public class ThreadQueue extends Thread{
             try{
                 logger.info("thread is running...");
                 if(!notSaveMySql.isEmpty()){
-                    Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
-                    NotSaveMySql notSave = (NotSaveMySql)notSaveMySql.poll();       // Get phan tu dau tien trong Queue va xoa luon trong Queue
-                    while(notSave != null){     // Thuc hien cho den khi nao trong Queue het phan tu.
-                        MySqlNewsService mySqlS = new MySqlNewsService();
-                        switch(notSave.getCategory()){
-                            case 1:{
-                                if(!mySqlS.InsertNews(notSave.getNews()))       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
-                                    temp.add(notSave);
-                                break;
+                    if(MySQLHelper.StartConnectDatabase()){
+                        Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
+                        NotSaveMySql notSave = (NotSaveMySql)notSaveMySql.poll();       // Get phan tu dau tien trong Queue va xoa luon trong Queue
+                        while(notSave != null){     // Thuc hien cho den khi nao trong Queue het phan tu.
+                            MySqlNewsService mySqlS = new MySqlNewsService();
+                            switch(notSave.getCategory()){
+                                case 1:{
+                                    if(!mySqlS.InsertNews(notSave.getNews()))       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
+                                        temp.add(notSave);
+                                    break;
+                                }
+                                case 2:{
+                                    break;
+                                }
                             }
-                            case 2:{
-                                break;
-                            }
+                            notSave = (NotSaveMySql)notSaveMySql.poll();            // Lay phan tu dau tien cua Queue va xoa luon trong Queue
                         }
-                        notSave = (NotSaveMySql)notSaveMySql.poll();            // Lay phan tu dau tien cua Queue va xoa luon trong Queue
+                        notSaveMySql = temp;
+                    }else{
+                        logger.info("Thread: Don't connect to MySQL Database!!!");
                     }
-                    notSaveMySql = temp;
                 }else{
                     logger.info("Not Save MySql Queue Empty!!!");
                 }
