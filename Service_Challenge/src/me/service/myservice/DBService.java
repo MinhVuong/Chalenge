@@ -18,9 +18,9 @@ import org.apache.log4j.Logger;
  *
  * @author Kuti
  */
-public class InsertNews {
+public class DBService {
 
-    private Logger logger = Logger.getLogger(InsertNews.class);
+    private Logger logger = Logger.getLogger(DBService.class);
     MongoNewsService mongoS = new MongoNewsService();
     MySqlNewsService mysqlS = new MySqlNewsService();
     Gson gson = new Gson();
@@ -31,7 +31,7 @@ public class InsertNews {
         if (mongoS.InsertNews(news)) {
             Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
             if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
-            } else {        // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
+            } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
                 notSaveMySql.add(gson.toJson(notSave));
                 notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
             }
@@ -39,6 +39,23 @@ public class InsertNews {
             return true;
 
         } else {
+            return false;
+        }
+    }
+    
+    public boolean UpdateStatus2DB(int id, NotSaveMySqlMemcached notSaveMySqlMemcached){
+        NotSaveMySql notSave = new NotSaveMySql(2, new News(id, "", 0, ""));
+        QueueAfterMemcached.AddObjectToQueue(notSave);          // Luu vao Cache de phong cup dien mk chua Sync
+        if(mongoS.UpdateStatus(id)){
+            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+            if(notSaveMySql.isEmpty() && mysqlS.UpdateStatus(id)){
+            }else{                      // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
+                notSaveMySql.add(gson.toJson(notSave));
+                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+            }
+            QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+            return true;
+        }else{
             return false;
         }
     }

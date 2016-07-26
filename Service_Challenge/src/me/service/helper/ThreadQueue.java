@@ -40,6 +40,8 @@ public class ThreadQueue extends Thread{
                                     break;
                                 }
                                 case 2:{
+                                    if(!mySqlS.UpdateStatus(notSave.getNews().getId()))
+                                        temp.add(gson.toJson(notSave));
                                     break;
                                 }
                             }

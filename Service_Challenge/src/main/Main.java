@@ -11,7 +11,6 @@ import esale.frontend.common.EsaleFEConfig;
 import httpservice.WebServer;
 import java.io.File;
 import java.util.Queue;
-import me.service.controller.InsertDB;
 import me.service.helper.MemcacheHelper;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.MySQLHelper;
@@ -64,17 +63,9 @@ public class Main {
                 logger_.error("Exception at startup: Don't connect to Memcached");
                 System.exit(3);
             }
-            // Asyn 2 DB after Start
-            if(!QueueAfterMemcached.SynTwoDataAfterStart()){
-                logger_.error("Exception at startup: Don't Synchronous Database 2 Database!!!");
-                System.exit(3);
-            }
             
             
-            //InsertDB insertDB = new InsertDB();
-            //insertDB.TestInsert();
-            //String result = insertDB.RetreviewDB();
-            //logger_.info("Object in table: "+result);
+            
             
             //NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
             //Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
@@ -96,6 +87,12 @@ public class Main {
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
             ThreadQueue threadQueue = new ThreadQueue();            
             threadQueue.run();
+            
+            // Asyn 2 DB after Start
+            if(!QueueAfterMemcached.SynTwoDataAfterStart()){
+                logger_.error("Exception at startup: Don't Synchronous Database 2 Database!!!");
+                System.exit(3);
+            }
 
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());

@@ -4,6 +4,7 @@ import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.controller.HTMLController;
 import esale.frontend.controller.APIController;
 import me.service.controller.InsertController;
+import me.service.controller.UpdateController;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
@@ -67,6 +68,7 @@ public class WebServer extends Thread {
         handler.addServlet(HTMLController.class, "/");
         handler.addServlet(APIController.class, "/api");
         handler.addServlet(InsertController.class, "/insert");
+        handler.addServlet(UpdateController.class, "/update");
 
         server.setStopAtShutdown(true);
         server.setSendServerVersion(true);

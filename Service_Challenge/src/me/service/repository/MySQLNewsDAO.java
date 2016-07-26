@@ -45,6 +45,22 @@ public class MySQLNewsDAO {
             return false;
         }catch(Exception ex){
             logger.error("CheckInsertRecord errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
+            return false;
+        }
+    }
+    
+    public boolean UpdateStatus(int id){
+        try{
+            Connection conn = MySQLHelper.getInstance();
+            String sql = "update news set status=0 where id=%d";
+            sql = String.format(sql, id);
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception ex){
+            logger.error("UpdateStatus errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
             return false;
         }
     }

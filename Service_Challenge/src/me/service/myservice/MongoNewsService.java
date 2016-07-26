@@ -20,5 +20,8 @@ public class MongoNewsService {
     public boolean CheckInsertRecord(News news){
         return mongoNewsD.CheckInsertRecord(news);
     }
+    public boolean UpdateStatus(int id){
+        return mongoNewsD.UpdateStatus(id);
+    }
     
 }

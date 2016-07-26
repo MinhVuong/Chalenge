@@ -72,4 +72,20 @@ public class NewsDAO {
             return false;
         }
     }
+    
+    public boolean UpdateStatus(int id){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject bdb = new BasicDBObject();
+            bdb.append("$set", new BasicDBObject().append("status", 0));
+            
+            BasicDBObject searchQuery = new BasicDBObject().append("id", id);
+            dBCollection.update(searchQuery, bdb);
+            
+            return true;
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            return false;
+        }    
+    }
 }

@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.Queue;
 import me.service.model.NotSaveMySql;
-import me.service.myservice.InsertNews;
+import me.service.myservice.DBService;
 import me.service.myservice.MongoNewsService;
 import me.service.myservice.MySqlNewsService;
 import net.spy.memcached.MemcachedClient;
@@ -81,18 +81,19 @@ public class QueueAfterMemcached {
                     MongoNewsService mongoS = new MongoNewsService();
                     MySqlNewsService mySqlS = new MySqlNewsService();
                     NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
-                    InsertNews insertN = new InsertNews();
+                    DBService dbS = new DBService();
                     while(notSave != null){
                         switch(notSave.getCategory()){
                             case 1:{
                                 if(!mongoS.CheckInsertRecord(notSave.getNews())){       // Mongo CHUA thuc hien query
-                                    insertN.InsertNewsTo2DB(notSave.getNews(), notSaveMySqlMemcached);
+                                    dbS.InsertNewsTo2DB(notSave.getNews(), notSaveMySqlMemcached);
                                 }else if(!mySqlS.CheckInsertRecord(notSave.getNews())){                                                  // Mongo da thuc hien Quey
                                     mySqlS.InsertNews(notSave.getNews());
                                 }
                                 break;
                             }
                             case 2:{
+                                dbS.UpdateStatus2DB(notSave.getNews().getId(), notSaveMySqlMemcached);
                                 break;
                             }
                         }

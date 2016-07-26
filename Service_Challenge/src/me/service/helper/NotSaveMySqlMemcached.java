@@ -8,7 +8,6 @@ package me.service.helper;
 import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.Queue;
-import me.service.model.NotSaveMySql;
 import net.spy.memcached.MemcachedClient;
 import org.apache.log4j.Logger;
 
@@ -20,20 +19,6 @@ public class NotSaveMySqlMemcached {
     Gson gson = new Gson();
     int time = 60*60*24;
     private static Logger logger = Logger.getLogger(NotSaveMySqlMemcached.class);
-    /*public Queue AddNotSaveMySqlToQueue(NotSaveMySql notSave){
-        try{
-            MemcachedClient mem = MemcacheHelper.GetInstance();
-            Queue queue = (Queue)mem.get("queue");
-            if(queue == null)
-                queue = new LinkedList();
-            queue.add(notSave);
-            mem.add("queue", time, queue);
-            return queue;
-        }catch(Exception ex){
-            logger.error("NotSaveMySqlMemcached error: " + ex.getMessage());
-            return new LinkedList();
-        }
-    }*/
     
     public boolean SaveNotSaveMySqlQueue(Queue queue){
         try{

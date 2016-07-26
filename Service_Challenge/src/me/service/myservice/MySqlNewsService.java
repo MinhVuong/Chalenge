@@ -20,5 +20,8 @@ public class MySqlNewsService {
     public boolean CheckInsertRecord(News news){
         return mysqlNewsD.CheckInsertRecord(news);
     }
+    public boolean UpdateStatus(int id){
+        return mysqlNewsD.UpdateStatus(id);
+    }
     
 }
