@@ -28,6 +28,7 @@ public class MySQLHelper {
 
     //create an object of SingleObject
     private static Connection instance;
+    public static boolean connect=false;
 
     private MySQLHelper() {
     }
@@ -39,18 +40,25 @@ public class MySQLHelper {
     }
 
     public static boolean StartConnectDatabase() throws ClassNotFoundException, SQLException {
-        try {
-            Class.forName(JDBC_DRIVER);
-            instance = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
+        if(!connect){
+            try {
+                Class.forName(JDBC_DRIVER);
+                instance = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
 
-            if (instance == null) {
+                if (instance == null) {
+                    connect = false;
+                    return false;
+                } else {
+                    connect = true;
+                    return true;
+                }
+            } catch (Exception ex) {
+                logger.error("Connect MySql fail: " + ex.getMessage());
+                connect = false;
                 return false;
-            } else {
-                return true;
             }
-        } catch (Exception ex) {
-            logger.error("Connect MySql fail: " + ex.getMessage());
-            return false;
+        }else{
+            return true;
         }
     }
 }

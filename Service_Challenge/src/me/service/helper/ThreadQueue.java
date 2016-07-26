@@ -31,7 +31,7 @@ public class ThreadQueue extends Thread{
                         Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
                         String str = (String)notSaveMySql.poll();
                         NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);       // Get phan tu dau tien trong Queue va xoa luon trong Queue
-                        while(notSave != null){             // Thuc hien cho den khi nao trong Queue het phan tu.
+                        while(notSave != null && MySQLHelper.connect==true){             // Thuc hien cho den khi nao trong Queue het phan tu.
                             MySqlNewsService mySqlS = new MySqlNewsService();
                             switch(notSave.getCategory()){
                                 case 1:{
@@ -45,6 +45,9 @@ public class ThreadQueue extends Thread{
                             }
                             str = (String)notSaveMySql.poll();
                             notSave = gson.fromJson(str, NotSaveMySql.class);           // Lay phan tu dau tien cua Queue va xoa luon trong Queue
+                        }
+                        if(!notSaveMySql.isEmpty()){
+                            temp = MergerTwoQueue(temp, notSaveMySql);
                         }
                         notSaveMySqlMemcached.SaveNotSaveMySqlQueue(temp);
                     }else{
@@ -60,4 +63,14 @@ public class ThreadQueue extends Thread{
         }
         
     }  
+    
+    public Queue MergerTwoQueue(Queue a, Queue b){
+        Queue result = a;
+        while(!b.isEmpty()){
+            String str = (String)b.poll();
+            NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);
+            result.add(gson.toJson(notSave));
+        }
+        return result;
+    }
 }

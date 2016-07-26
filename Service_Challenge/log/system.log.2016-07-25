@@ -1,0 +1,286 @@
+ERROR [qtp719569929-101] 2016-07-25 11:57:45,956 MySQLNewsDAO.java (line 29) InsertNews errors: Communications link failure due to underlying exception: 
+
+** BEGIN NESTED EXCEPTION ** 
+
+java.net.SocketException
+MESSAGE: Software caused connection abort: recv failed
+
+STACKTRACE:
+
+java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:113)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:160)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:188)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:1994)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:2411)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2916)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1631)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1723)
+	at com.mysql.jdbc.Connection.execSQL(Connection.java:3277)
+	at com.mysql.jdbc.Statement.executeUpdate(Statement.java:1402)
+	at com.mysql.jdbc.Statement.executeUpdate(Statement.java:1317)
+	at me.service.repository.MySQLNewsDAO.InsertNews(MySQLNewsDAO.java:26)
+	at me.service.myservice.MySqlNewsService.InsertNews(MySqlNewsService.java:18)
+	at me.service.myservice.InsertNews.InsertNewsTo2DB(InsertNews.java:30)
+	at me.service.controller.InsertController.doGet(InsertController.java:37)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:457)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:229)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1075)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:384)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1009)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:370)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:489)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:949)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:1011)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:644)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:668)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+** END NESTED EXCEPTION **
+
+
+
+Last packet sent to the server was 1 ms ago.
+ INFO [main] 2016-07-25 11:57:59,060 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 11:58:59,339 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 11:58:59,341 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [Thread-0] 2016-07-25 11:59:32,580 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-25 11:59:32,735 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-25 11:59:32,868 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-25 11:59:32,887 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-25 11:59:32,887 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-25 11:59:32,951 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-25 11:59:32,952 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27019] 2016-07-25 11:59:33,007 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:40}] to localhost:27019
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27017] 2016-07-25 11:59:33,008 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:63}] to localhost:27017
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27018] 2016-07-25 11:59:33,010 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:38}] to localhost:27018
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27019] 2016-07-25 11:59:33,011 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3293107, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27019] 2016-07-25 11:59:33,012 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27017] 2016-07-25 11:59:33,014 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=6161182, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1}
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27017] 2016-07-25 11:59:33,015 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000001 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27017] 2016-07-25 11:59:33,015 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27017] 2016-07-25 11:59:33,015 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cb43f7c01164c76673d', description='null'}-localhost:27018] 2016-07-25 11:59:33,016 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=5475039, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [main] 2016-07-25 11:59:33,194 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:64}] to localhost:27017
+ INFO [main] 2016-07-25 11:59:33,211 Main.java (line 87) Size Request: 15
+ INFO [main] 2016-07-25 11:59:33,211 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 11:59:33,229 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ERROR [qtp1276363412-65] 2016-07-25 12:00:01,238 MySQLNewsDAO.java (line 29) InsertNews errors: Communications link failure due to underlying exception: 
+
+** BEGIN NESTED EXCEPTION ** 
+
+java.net.SocketException
+MESSAGE: Software caused connection abort: recv failed
+
+STACKTRACE:
+
+java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:113)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:160)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:188)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:1994)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:2411)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2916)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1631)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1723)
+	at com.mysql.jdbc.Connection.execSQL(Connection.java:3277)
+	at com.mysql.jdbc.Statement.executeUpdate(Statement.java:1402)
+	at com.mysql.jdbc.Statement.executeUpdate(Statement.java:1317)
+	at me.service.repository.MySQLNewsDAO.InsertNews(MySQLNewsDAO.java:26)
+	at me.service.myservice.MySqlNewsService.InsertNews(MySqlNewsService.java:18)
+	at me.service.myservice.InsertNews.InsertNewsTo2DB(InsertNews.java:30)
+	at me.service.controller.InsertController.doGet(InsertController.java:37)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:457)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:229)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1075)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:384)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1009)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:370)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:489)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:949)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:1011)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:644)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:668)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+** END NESTED EXCEPTION **
+
+
+
+Last packet sent to the server was 2 ms ago.
+ INFO [Thread-0] 2016-07-25 12:00:21,443 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-25 12:00:21,596 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-25 12:00:21,732 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-25 12:00:21,741 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-25 12:00:21,742 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-25 12:00:21,807 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-25 12:00:21,807 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27018] 2016-07-25 12:00:21,875 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:39}] to localhost:27018
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27019] 2016-07-25 12:00:21,875 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:41}] to localhost:27019
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27017] 2016-07-25 12:00:21,876 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:65}] to localhost:27017
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27018] 2016-07-25 12:00:21,878 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2061640, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27018] 2016-07-25 12:00:21,878 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27019] 2016-07-25 12:00:21,880 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=4335635, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27017] 2016-07-25 12:00:21,882 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=6375783, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1}
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27017] 2016-07-25 12:00:21,883 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000001 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27017] 2016-07-25 12:00:21,883 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959ce53f7c0118dc71beed', description='null'}-localhost:27017] 2016-07-25 12:00:21,886 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ERROR [main] 2016-07-25 12:00:23,926 MySQLHelper.java (line 52) Connect MySql fail: Communications link failure due to underlying exception: 
+
+** BEGIN NESTED EXCEPTION ** 
+
+java.net.ConnectException
+MESSAGE: Connection refused: connect
+
+STACKTRACE:
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:256)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:271)
+	at com.mysql.jdbc.Connection.createNewIO(Connection.java:2771)
+	at com.mysql.jdbc.Connection.<init>(Connection.java:1555)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:285)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at me.service.helper.MySQLHelper.StartConnectDatabase(MySQLHelper.java:44)
+	at main.Main.main(Main.java:58)
+
+
+** END NESTED EXCEPTION **
+
+
+
+Last packet sent to the server was 0 ms ago.
+ERROR [main] 2016-07-25 12:00:23,927 Main.java (line 59) Exception at startup: Don't connect to MySQL
+ INFO [Thread-2] 2016-07-25 12:00:23,960 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
+ INFO [Thread-0] 2016-07-25 12:00:37,255 WebServer.java (line 45) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-25 12:00:37,399 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-25 12:00:37,531 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-25 12:00:37,552 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017, localhost:27018, localhost:27019], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-25 12:00:37,552 SLF4JLogger.java (line 71) Adding discovered server localhost:27017 to client view of cluster
+ INFO [main] 2016-07-25 12:00:37,619 SLF4JLogger.java (line 71) Adding discovered server localhost:27018 to client view of cluster
+ INFO [main] 2016-07-25 12:00:37,619 SLF4JLogger.java (line 71) Adding discovered server localhost:27019 to client view of cluster
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27018] 2016-07-25 12:00:37,675 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:40}] to localhost:27018
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,676 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:66}] to localhost:27017
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27019] 2016-07-25 12:00:37,677 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:42}] to localhost:27019
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,679 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1810791, setName='davi', canonicalAddress=localhost:27017, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1}
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27019] 2016-07-25 12:00:37,680 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27019, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2968158, setName='davi', canonicalAddress=localhost:27019, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,681 SLF4JLogger.java (line 71) Discovered cluster type of REPLICA_SET
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,682 SLF4JLogger.java (line 71) Setting max election id to 7fffffff0000000000000001 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,682 SLF4JLogger.java (line 71) Setting max set version to 1 from replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:00:37,682 SLF4JLogger.java (line 71) Discovered replica set primary localhost:27017
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27018] 2016-07-25 12:00:37,692 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27018, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=16207949, setName='davi', canonicalAddress=localhost:27018, hosts=[localhost:27018, localhost:27017, localhost:27019], passives=[], arbiters=[], primary='localhost:27017', tagSet=TagSet{[]}, electionId=null, setVersion=1}
+ INFO [main] 2016-07-25 12:00:37,873 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:67}] to localhost:27017
+ INFO [main] 2016-07-25 12:00:37,891 Main.java (line 87) Size Request: 25
+ INFO [main] 2016-07-25 12:00:37,892 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:01:38,050 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:01:38,053 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:02:38,054 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:02:38,056 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:03:38,056 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:03:38,058 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:04:38,059 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:04:38,061 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:05:38,061 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:05:38,063 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:06:38,064 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:06:38,065 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [main] 2016-07-25 12:07:38,067 ThreadQueue.java (line 26) thread is running...
+ INFO [main] 2016-07-25 12:07:38,069 ThreadQueue.java (line 54) Not Save MySql Queue Empty!!!
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27017] 2016-07-25 12:08:08,782 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:142)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27018] 2016-07-25 12:08:08,782 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27018
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:142)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more
+ INFO [cluster-ClusterId{value='57959cf53f7c011138b5ffb7', description='null'}-localhost:27019] 2016-07-25 12:08:08,828 SLF4JLogger.java (line 76) Exception in monitor thread while connecting to server localhost:27019
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:114)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:142)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 more

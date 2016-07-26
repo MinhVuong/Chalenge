@@ -57,4 +57,19 @@ public class NewsDAO {
             return 0;
         }
     }
+    
+    public boolean CheckInsertRecord(News news){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject bdb = new BasicDBObject();
+            bdb.put("id", news.getId());
+            DBCursor cur = dBCollection.find(bdb);
+            while(cur.hasNext()){
+                return true;
+            }
+            return false;
+        }catch(Exception e){
+            return false;
+        }
+    }
 }

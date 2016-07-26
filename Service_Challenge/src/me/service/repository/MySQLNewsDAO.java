@@ -6,6 +6,7 @@
 package me.service.repository;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import me.service.helper.MySQLHelper;
 import me.service.model.News;
@@ -27,8 +28,24 @@ public class MySQLNewsDAO {
             return true;
         }catch(Exception ex){
             logger.error("InsertNews errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
             return false;
         }
     }
-    
+    public boolean CheckInsertRecord(News news){
+        try{
+            Connection conn = MySQLHelper.getInstance();
+            String sql = "select * from news where id=%d and time=%s";
+            sql = String.format(sql, news.getId(), news.getTime());
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                return true;
+            }
+            return false;
+        }catch(Exception ex){
+            logger.error("CheckInsertRecord errors: "+ex.getMessage());
+            return false;
+        }
+    }
 }

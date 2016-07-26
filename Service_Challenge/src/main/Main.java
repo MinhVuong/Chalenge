@@ -16,6 +16,7 @@ import me.service.helper.MemcacheHelper;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.MySQLHelper;
 import me.service.helper.NotSaveMySqlMemcached;
+import me.service.helper.QueueAfterMemcached;
 import me.service.helper.ThreadQueue;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
@@ -63,6 +64,13 @@ public class Main {
                 logger_.error("Exception at startup: Don't connect to Memcached");
                 System.exit(3);
             }
+            // Asyn 2 DB after Start
+            if(!QueueAfterMemcached.SynTwoDataAfterStart()){
+                logger_.error("Exception at startup: Don't Synchronous Database 2 Database!!!");
+                System.exit(3);
+            }
+            
+            
             //InsertDB insertDB = new InsertDB();
             //insertDB.TestInsert();
             //String result = insertDB.RetreviewDB();
@@ -82,7 +90,7 @@ public class Main {
             //String temp = (String)notSaveMySql.poll();
             //logger_.info("Object in Queue: "+temp);
             
-                
+            
             EsaleFEConfig.sizeR = NewsDAO.GetSizeIndexNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
             logger_.info("Size Request: "+EsaleFEConfig.sizeR);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
