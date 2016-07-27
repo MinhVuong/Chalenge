@@ -1,24 +1,20 @@
-start mongod --replSet davi --logpath \data\rs1\1.log --dbpath \data\rs1 --port 27017 --smallfiles --oplogSize 64
+start mongod --replSet vuong --logpath \data\rs1\1.log --dbpath \data\rs1 --port 27017 --smallfiles --oplogSize 64
 
+start mongod --replSet vuong --logpath \data\rs2\2.log --dbpath \data\rs2 --port 27018 --smallfiles --oplogSize 64
 
+start mongod --replSet vuong --logpath \data\rs3\3.log --dbpath \data\rs3 --port 27019 --smallfiles --oplogSize 64
 
-start mongod --replSet davi --logpath \data\rs2\2.log --dbpath \data\rs2 --port 27018 --smallfiles --oplogSize 64
+start mongod --replSet vuong --logpath \data\rs3\4.log --dbpath \data\rs4 --port 27020 --smallfiles --oplogSize 64
 
+// connect to mongo --port 27017:
+mongo --port 27017
+rs.initiate();
+rs.add("CPU01661:27018")
+rs.add("CPU01661:27019")
+rs.addArb("CPU01661:27020")
 
+rs.status();
 
-start mongod --replSet davi --logpath \data\rs3\3.log --dbpath \data\rs3 --port 27019 --smallfiles --oplogSize 64
-
-config = {_id: "davi", members: [{_id: 0, host: "localhost:27017"}, {_id: 1, host: "localhost:27018"},{_id: 2, host: "localhost:27019"}]};
-
-rs.initiate(config);
-
-rs.status()
-
-
-//primary
-db.demo.insert({name: "Vuong", age: 22});
-
-db.demo.find().pretty();
 
 // secondary
 rs.slaveOk();
