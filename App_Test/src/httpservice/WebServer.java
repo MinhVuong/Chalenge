@@ -3,7 +3,11 @@ package httpservice;
 import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.controller.HTMLController;
 import esale.frontend.controller.APIController;
+import me.test.controller.GetController;
 import me.test.controller.HomeController;
+import me.test.controller.InputInsertController;
+import me.test.controller.InsertController;
+import me.test.controller.UpdateController;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
@@ -66,6 +70,10 @@ public class WebServer extends Thread {
 
         handler.addServlet(HomeController.class, "/home");
         handler.addServlet(APIController.class, "/api");
+        handler.addServlet(InsertController.class, "/insert");
+        handler.addServlet(UpdateController.class, "/update");
+        handler.addServlet(GetController.class, "/get");
+        handler.addServlet(InputInsertController.class, "/input-insert");
 
         server.setStopAtShutdown(true);
         server.setSendServerVersion(true);
