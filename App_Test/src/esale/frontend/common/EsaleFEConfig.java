@@ -29,7 +29,8 @@ public class EsaleFEConfig {
     public final static int CONFIG = 1;
     public final static int REPORT = 2;
     public final static int RETRYSMS = 4;
-    
+    // path css/js/image
+    public static String path;
     public static void loadConfig(){
         
         try{
@@ -51,6 +52,9 @@ public class EsaleFEConfig {
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
             timeDeploy = dateFormat.format(cal.getTime());
+            
+            // get path
+            path = Config.getParam("urlpath", "urlpath");
         }
         catch(Exception ex){
             logger_.error("Read config file fail", ex);

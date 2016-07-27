@@ -3,6 +3,7 @@ package httpservice;
 import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.controller.HTMLController;
 import esale.frontend.controller.APIController;
+import me.test.controller.HomeController;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
@@ -63,7 +64,7 @@ public class WebServer extends Thread {
         handler.setSessionHandler(new SessionHandler());
         server.setHandler(handler);
 
-        handler.addServlet(HTMLController.class, "/");
+        handler.addServlet(HomeController.class, "/home");
         handler.addServlet(APIController.class, "/api");
 
         server.setStopAtShutdown(true);
