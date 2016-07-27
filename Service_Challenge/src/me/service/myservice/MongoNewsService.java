@@ -5,6 +5,7 @@
  */
 package me.service.myservice;
 
+import java.util.List;
 import me.service.model.News;
 import me.service.repository.NewsDAO;
 
@@ -23,5 +24,7 @@ public class MongoNewsService {
     public boolean UpdateStatus(int id){
         return mongoNewsD.UpdateStatus(id);
     }
-    
+    public List<News> GetNewFromTo(int from, int to){
+        return mongoNewsD.GetNewFromTo(from, to);
+    }
 }

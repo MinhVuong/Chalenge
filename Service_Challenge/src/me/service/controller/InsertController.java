@@ -46,7 +46,7 @@ public class InsertController extends HttpServlet{
             }
             else{
                 resp.setStatus(400);
-                Utils.out("ID user ko dc rong", resp);
+                Utils.out("size ko dc rong", resp);
             }
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);

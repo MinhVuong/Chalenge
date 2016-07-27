@@ -3,6 +3,7 @@ package httpservice;
 import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.controller.HTMLController;
 import esale.frontend.controller.APIController;
+import me.service.controller.GetNewsController;
 import me.service.controller.InsertController;
 import me.service.controller.UpdateController;
 import org.apache.log4j.Logger;
@@ -69,6 +70,7 @@ public class WebServer extends Thread {
         handler.addServlet(APIController.class, "/api");
         handler.addServlet(InsertController.class, "/insert");
         handler.addServlet(UpdateController.class, "/update");
+        handler.addServlet(GetNewsController.class, "/get");
 
         server.setStopAtShutdown(true);
         server.setSendServerVersion(true);

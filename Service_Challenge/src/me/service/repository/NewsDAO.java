@@ -9,6 +9,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import java.util.ArrayList;
+import java.util.List;
 import me.service.helper.MongoDBHelper;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
@@ -87,5 +89,28 @@ public class NewsDAO {
             logger.error(e.getMessage());
             return false;
         }    
+    }
+    
+    public List<News> GetNewFromTo(int from, int to){
+        try{
+            List<News> result = new ArrayList<News>();
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject inQuery = new BasicDBObject();
+            List<Integer> list = new ArrayList<Integer>();
+            for(int i=from; i<=to; i++){
+                list.add(i);
+            }
+            inQuery.put("id", new BasicDBObject("$in", list));
+            DBCursor cursor = dBCollection.find(inQuery);
+            while(cursor.hasNext()) {
+                DBObject obj = cursor.next();
+                News news = new News((int)obj.get("id"), (String)obj.get("content"), (int)obj.get("status"), (String)obj.get("time"));
+                result.add(news);
+            }
+            return result;
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            return new ArrayList<News>();
+        }
     }
 }

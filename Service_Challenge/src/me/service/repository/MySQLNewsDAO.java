@@ -8,6 +8,8 @@ package me.service.repository;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import me.service.helper.MySQLHelper;
 import me.service.model.News;
 import org.apache.log4j.Logger;
@@ -62,6 +64,26 @@ public class MySQLNewsDAO {
             logger.error("UpdateStatus errors: "+ex.getMessage());
             MySQLHelper.connect = false;
             return false;
+        }
+    }
+    
+    public List<News> GetNewFromTo(int from, int to){
+        try{
+            List<News> result = new ArrayList<News>();
+            Connection conn = MySQLHelper.getInstance();
+            String sql = "select * from news where id between %d and %d";
+            sql = String.format(sql, from, to);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                News news = new News(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+                result.add(news);
+            }
+            return result;
+        }catch(Exception ex){
+            logger.error("GetNewFromTo errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
+            return null;
         }
     }
 }
