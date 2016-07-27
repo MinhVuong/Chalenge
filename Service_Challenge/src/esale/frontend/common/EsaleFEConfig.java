@@ -29,7 +29,6 @@ public class EsaleFEConfig {
     public final static int CONFIG = 1;
     public final static int REPORT = 2;
     public final static int RETRYSMS = 4;
-    public static int sizeR;
     
     public static void loadConfig(){
         

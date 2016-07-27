@@ -16,6 +16,7 @@ import me.service.helper.MongoDBHelper;
 import me.service.helper.MySQLHelper;
 import me.service.helper.NotSaveMySqlMemcached;
 import me.service.helper.QueueAfterMemcached;
+import me.service.helper.SizeIndexMemcached;
 import me.service.helper.ThreadQueue;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
@@ -82,8 +83,9 @@ public class Main {
             //logger_.info("Object in Queue: "+temp);
             
             
-            EsaleFEConfig.sizeR = NewsDAO.GetSizeIndexNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
-            logger_.info("Size Request: "+EsaleFEConfig.sizeR);
+            int size = NewsDAO.GetSizeIndexNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
+            SizeIndexMemcached.SaveSizeIndex(size);
+            logger_.info("Size Request: "+size);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
             ThreadQueue threadQueue = new ThreadQueue();            
             threadQueue.run();

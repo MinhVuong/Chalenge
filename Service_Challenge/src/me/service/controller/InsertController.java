@@ -6,12 +6,12 @@
 package me.service.controller;
 
 import com.google.gson.Gson;
-import esale.frontend.common.EsaleFEConfig;
 import esale.frontend.common.Utils;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import me.service.helper.NotSaveMySqlMemcached;
+import me.service.helper.SizeIndexMemcached;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
 import me.service.myservice.DBService;
@@ -34,7 +34,8 @@ public class InsertController extends HttpServlet{
                 NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                 resp.setStatus(200);
                 for(int i=0; i<Integer.parseInt(size); i++){
-                    News news = new News(++EsaleFEConfig.sizeR, "Noi dung "+EsaleFEConfig.sizeR, 1, TimeHelper.GetTimeCurrent());
+                    int sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
+                    News news = new News(sizeR, "Noi dung "+sizeR, 1, TimeHelper.GetTimeCurrent());
                     if(!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
                         logger.info("Don't insert record news: "+ gson.toJson(news));
                         resp.setStatus(500);
