@@ -13,7 +13,10 @@ rs.initiate();
 rs.add("CPU01661:27018")
 rs.add("CPU01661:27019")
 rs.addArb("CPU01661:27020")
-
+// Home
+rs.add("TMVUONG:27018")
+rs.add("TMVUONG:27019")
+rs.addArb("TMVUONG:27020")
 rs.status();
 
 =======
