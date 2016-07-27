@@ -30,6 +30,10 @@ public class MemcacheHelper {
             memcache = new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));
             if(memcache == null)
                 return false;
+            
+            memcache.add("vuong", 0, "vuong");
+            String str = (String)memcache.get("vuong");
+            memcache.delete("vuong");
             return true;
         } catch (IOException e) {
             // TODO Auto-generated catch block
