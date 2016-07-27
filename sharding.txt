@@ -1,0 +1,65 @@
+config:
+start mongod --configsvr --port 26050 --logpath /data/db/log/log.cfg0 --logappend --dbpath /data/db/cfg0
+start mongod --configsvr --port 26051 --logpath /data/db/log/log.cfg1 --logappend --dbpath /data/db/cfg1
+start mongod --configsvr --port 26052 --logpath /data/db/log/log.cfg2 --logappend --dbpath /data/db/cfg2
+
+shard a:
+start mongod --shardsvr --replSet a --logpath \data\a\a0.log --dbpath \data\a\a0 --port 27000 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet a --logpath \data\a\a1.log --dbpath \data\a\a1 --port 27001 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet a --logpath \data\a\a2.log --dbpath \data\a\a2 --port 27002 --smallfiles --oplogSize 64
+
+connect mongo port 27000:
+config = {_id: "a", members: [{_id: 0, host: "localhost:27000"}, {_id: 1, host: "localhost:27001"},{_id: 2, host: "localhost:27002"}]};
+rs.initiate(config);
+rs.status()
+
+shard b:
+start mongod --shardsvr --replSet b --logpath \data\b\b0.log --dbpath \data\b\b0 --port 27003 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet b --logpath \data\b\b1.log --dbpath \data\b\b1 --port 27004 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet b --logpath \data\b\b2.log --dbpath \data\b\b2 --port 27005 --smallfiles --oplogSize 64
+
+connect mongo port 27003:
+config = {_id: "b", members: [{_id: 0, host: "localhost:27003"}, {_id: 1, host: "localhost:27004"},{_id: 2, host: "localhost:27005"}]};
+rs.initiate(config);
+rs.status()
+
+shard c:
+start mongod --shardsvr --replSet c --logpath \data\c\c0.log --dbpath \data\c\c0 --port 27006 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet c --logpath \data\c\c1.log --dbpath \data\c\c1 --port 27007 --smallfiles --oplogSize 64
+start mongod --shardsvr --replSet c --logpath \data\c\c2.log --dbpath \data\c\c2 --port 27008 --smallfiles --oplogSize 64
+
+connect mongo port 27003:
+config = {_id: "c", members: [{_id: 0, host: "localhost:27006"}, {_id: 1, host: "localhost:27007"},{_id: 2, host: "localhost:27008"}]};
+rs.initiate(config);
+rs.status()
+
+mongos config:
+start mongos --configdb localhost:26050,localhost:26051,localhost:26052 --logappend --logpath /data/db/log.mongos --port 26060
+start mongos --configdb localhost:26050,localhost:26051,localhost:26052 --logappend --logpath /data/db/log1.mongos --port 26061
+
+connect mongo 26060:
+mongo --port 26060
+sh.status()
+sh.addShard("a/localhost:27000")
+sh.addShard("b/localhost:27003")
+sh.addShard("c/localhost:27006")
+
+sh.getBalancerState()
+sh.enableSharding("demo")
+sh.shardCollection("demo.tabledemo", {"username": 1})
+db.tabledemo.getIndexes()
+
+db.settings.find({"_id": "chunksize"})
+
+sh.stopBalancer()
+for(var i=0; i<2; i++){db.tabledemo.insert({"username": "user"+i, "time": new Date()})}
+
+
+sh.status({verbose:1})
+
+
+
+//////////////////replication-Set
+rs.initiate()
+rs.add("TMVUONG:27018")
+rs.add("TMVUONG:27019")
