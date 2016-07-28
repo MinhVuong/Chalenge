@@ -5,6 +5,9 @@
  */
 package me.service.helper;
 
+import java.util.concurrent.Future;
+import net.spy.memcached.CASResponse;
+import net.spy.memcached.CASValue;
 import net.spy.memcached.MemcachedClient;
 import org.apache.log4j.Logger;
 
@@ -16,11 +19,11 @@ public class SizeIndexMemcached {
     static int time = 60*60*24;
     private static Logger logger = Logger.getLogger(SizeIndexMemcached.class);
     
+    
     public static boolean SaveSizeIndex(int size){
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
-            mem.delete("indexR");
-            mem.add("indexR", time, size);
+            Future fo = mem.set("indexR", time, size);
             return true;
         }catch(Exception ex){
             logger.error("SaveSizeIndex error: " + ex.getMessage());
@@ -31,17 +34,23 @@ public class SizeIndexMemcached {
     public static int GetAndSaveSizeIndex(){
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
-            int size = (int)mem.get("indexR");
-            /*while(size==0){
-                Thread.sleep(10);
-                size = (int)mem.get("indexR");
-            }*/
-            mem.delete("indexR");
-            mem.add("indexR", time, ++size);
-            return size;
+            CASValue casValue = mem.gets("indexR");
+            logger.info("cas0: " + casValue.getValue());
+            logger.info("cas1: " + mem.gets("indexR").getValue());
+            logger.info("temp: " + mem.get("indexR"));
+            
+            int size = (int)casValue.getValue();
+            size++;
+            CASResponse casresp = mem.cas("indexR", casValue.getCas(), time, size);
+            
+            
+            logger.info("temp: " + mem.get("indexR"));
+            logger.info("cas2: " + mem.gets("indexR").getValue());
+            return size;            
         }catch(Exception ex){
-            logger.error("SaveSizeIndex error: " + ex.getMessage());
+            logger.error("GetAndSaveSizeIndex error: " + ex.getMessage());
             return 0;
         }
     }
+    
 }

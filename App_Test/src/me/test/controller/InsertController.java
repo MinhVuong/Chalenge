@@ -28,6 +28,7 @@ public class InsertController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){
         try {
+            long start = System.currentTimeMillis();
             TemplateDataDictionary myDic = TemplateDictionary.create();
             myDic.setVariable("path", EsaleFEConfig.path);
             String template="";
@@ -51,6 +52,7 @@ public class InsertController extends HttpServlet{
                     }
                 }
                 Utils.out(template, resp);
+                logger.info("Thoi gin insert voi size: "+ size + " la: " + (System.currentTimeMillis()-start));
             }else{
                 resp.setStatus(400);
                 Utils.out("size ko dc rong", resp);

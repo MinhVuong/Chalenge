@@ -10,6 +10,7 @@ import com.vng.jcore.common.LogUtil;
 import esale.frontend.common.EsaleFEConfig;
 import httpservice.WebServer;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.Queue;
 import me.service.helper.MemcacheHelper;
 import me.service.helper.MongoDBHelper;
@@ -33,6 +34,7 @@ public class Main {
     private static Logger logger_ = Logger.getLogger(Main.class);
     static Gson gson = new Gson();
     public static void main(String[] args) {
+        
         
         LogUtil.init();
         EsaleFEConfig.loadConfig();
@@ -89,11 +91,11 @@ public class Main {
             logger_.info("Size Request: "+size);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
                      
-            SynchThread synchThread = new SynchThread();
+            //SynchThread synchThread = new SynchThread();
             ThreadQueue threadQueue = new ThreadQueue();   
-            synchThread.setPriority(6);
+            //synchThread.setPriority(6);
             threadQueue.setPriority(5);
-            synchThread.start();
+            //synchThread.start();
             threadQueue.start();
             
             // Asyn 2 DB after Start

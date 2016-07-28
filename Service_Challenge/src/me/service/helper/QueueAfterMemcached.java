@@ -35,7 +35,7 @@ public class QueueAfterMemcached {
             }
             queue.add(gson.toJson(notSave));
             mem.delete("queue_after");
-            mem.add("queue_after", time, gson.toJson(queue));
+            mem.set("queue_after", time, gson.toJson(queue));
             return true;
         }catch(Exception ex){
             logger.error("AddObjectToQueue error: " + ex.getMessage());
@@ -56,7 +56,7 @@ public class QueueAfterMemcached {
                 queue.poll();
             }
             mem.delete("queue_after");
-            mem.add("queue_after", time, gson.toJson(queue));
+            mem.set("queue_after", time, gson.toJson(queue));
             return true;
         }catch(Exception ex){
             logger.error("AddObjectToQueue error: " + ex.getMessage());

@@ -23,8 +23,7 @@ public class NotSaveMySqlMemcached {
     public boolean SaveNotSaveMySqlQueue(Queue queue){
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
-            mem.delete("queue");
-            mem.add("queue", time, gson.toJson(queue));
+            mem.set("queue", time, gson.toJson(queue));
             return true;
         }catch(Exception ex){
             logger.error("SaveNotSaveMySqlQueue error: " + ex.getMessage());

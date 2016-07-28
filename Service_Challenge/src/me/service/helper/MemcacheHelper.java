@@ -6,7 +6,11 @@
 package me.service.helper;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import net.spy.memcached.AddrUtil;
+import net.spy.memcached.CASResponse;
+import net.spy.memcached.CASValue;
 import net.spy.memcached.MemcachedClient;
 import org.apache.log4j.Logger;
 
@@ -25,15 +29,13 @@ public class MemcacheHelper {
         return memcache;
     }
 
-    public static boolean ConnectMemcache() {
+    public static boolean ConnectMemcache() throws InterruptedException, ExecutionException {
         try {
             memcache = new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));
             if(memcache == null)
                 return false;
             
-            memcache.add("vuong", 0, "vuong");
-            String str = (String)memcache.get("vuong");
-            memcache.delete("vuong");
+            
             return true;
         } catch (IOException e) {
             // TODO Auto-generated catch block
