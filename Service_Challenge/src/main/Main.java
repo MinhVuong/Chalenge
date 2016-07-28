@@ -17,6 +17,7 @@ import me.service.helper.MySQLHelper;
 import me.service.helper.NotSaveMySqlMemcached;
 import me.service.helper.QueueAfterMemcached;
 import me.service.helper.SizeIndexMemcached;
+import me.service.helper.SynchThread;
 import me.service.helper.ThreadQueue;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
@@ -87,14 +88,20 @@ public class Main {
             SizeIndexMemcached.SaveSizeIndex(size);
             logger_.info("Size Request: "+size);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
-            ThreadQueue threadQueue = new ThreadQueue();            
-            threadQueue.run();
+                     
+            SynchThread synchThread = new SynchThread();
+            ThreadQueue threadQueue = new ThreadQueue();   
+            synchThread.setPriority(6);
+            threadQueue.setPriority(5);
+            synchThread.start();
+            threadQueue.start();
             
             // Asyn 2 DB after Start
             if(!QueueAfterMemcached.SynTwoDataAfterStart()){
                 logger_.error("Exception at startup: Don't Synchronous Database 2 Database!!!");
                 System.exit(3);
             }
+            logger_.info("Started Application!!!");
 
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());
