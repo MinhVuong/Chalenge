@@ -37,7 +37,7 @@ public class MySQLNewsDAO {
     public boolean CheckInsertRecord(News news){
         try{
             Connection conn = MySQLHelper.getInstance();
-            String sql = "select * from news where id=%d and time=%s";
+            String sql = "select * from news where id=%d and time='%s'";
             sql = String.format(sql, news.getId(), news.getTime());
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

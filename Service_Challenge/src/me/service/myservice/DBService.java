@@ -33,15 +33,13 @@ public class DBService {
             Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
             if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
             } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                notSaveMySql.add(gson.toJson(notSave));
-                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+                notSaveMySqlMemcached.AddNotSaveMySql(notSave);
             }
             //SynchThread.synchDB.add(notSave);
             QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
             return true;
-
         } else {
+            QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
             return false;
         }
     }
@@ -50,13 +48,12 @@ public class DBService {
         NotSaveMySql notSave = new NotSaveMySql(2, new News(id, "", 0, ""));
         QueueAfterMemcached.AddObjectToQueue(notSave);          // Luu vao Cache de phong cup dien mk chua Sync
         if(mongoS.UpdateStatus(id)){
-            /*Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
             if(notSaveMySql.isEmpty() && mysqlS.UpdateStatus(id)){
             }else{                      // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                notSaveMySql.add(gson.toJson(notSave));
-                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
-            }*/
-            SynchThread.synchDB.add(notSave);
+                notSaveMySqlMemcached.AddNotSaveMySql(notSave);
+            }
+            //SynchThread.synchDB.add(notSave);
             QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
             return true;
         }else{

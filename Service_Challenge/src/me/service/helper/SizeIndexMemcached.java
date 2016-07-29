@@ -35,17 +35,13 @@ public class SizeIndexMemcached {
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
             CASValue casValue = mem.gets("indexR");
-            logger.info("cas0: " + casValue.getValue());
-            logger.info("cas1: " + mem.gets("indexR").getValue());
-            logger.info("temp: " + mem.get("indexR"));
-            
             int size = (int)casValue.getValue();
-            size++;
-            CASResponse casresp = mem.cas("indexR", casValue.getCas(), time, size);
-            
-            
-            logger.info("temp: " + mem.get("indexR"));
-            logger.info("cas2: " + mem.gets("indexR").getValue());
+            CASResponse casresp = mem.cas("indexR", casValue.getCas(), time, ++size);
+            while(!casresp.toString().equals("OK")){
+                casValue = mem.gets("indexR");
+                size = (int)casValue.getValue();
+                casresp = mem.cas("indexR", casValue.getCas(), time, ++size);
+            }
             return size;            
         }catch(Exception ex){
             logger.error("GetAndSaveSizeIndex error: " + ex.getMessage());

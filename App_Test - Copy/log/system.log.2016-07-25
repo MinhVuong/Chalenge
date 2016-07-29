@@ -1,0 +1,66 @@
+ INFO [Thread-0] 2016-07-20 16:20:12,709 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:20:13,003 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:20:13,464 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:20:17,664 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f42513f7c011b98f17335', description='null'}-localhost:27017] 2016-07-20 16:20:18,131 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:2}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f42513f7c011b98f17335', description='null'}-localhost:27017] 2016-07-20 16:20:18,132 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=547254}
+ INFO [main] 2016-07-20 16:20:21,303 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:3}] to localhost:27017
+ INFO [Thread-0] 2016-07-20 16:24:19,459 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:24:19,744 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:24:20,008 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:24:24,762 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f43483f7c01174cd5aa3e', description='null'}-localhost:27017] 2016-07-20 16:24:25,086 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:4}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f43483f7c01174cd5aa3e', description='null'}-localhost:27017] 2016-07-20 16:24:25,088 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=957213}
+ INFO [main] 2016-07-20 16:24:29,242 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:5}] to localhost:27017
+ INFO [Thread-0] 2016-07-20 16:25:32,788 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:25:32,948 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:25:33,075 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:25:33,103 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-20 16:25:33,192 SLF4JLogger.java (line 71) No server chosen by ReadPreferenceServerSelector{readPreference=primary} from cluster description ClusterDescription{type=UNKNOWN, connectionMode=SINGLE, all=[ServerDescription{address=localhost:27017, type=UNKNOWN, state=CONNECTING}]}. Waiting for 30000 ms before timing out
+ INFO [cluster-ClusterId{value='578f438d3f7c0114e4a6bffd', description='null'}-localhost:27017] 2016-07-20 16:25:33,212 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:6}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f438d3f7c0114e4a6bffd', description='null'}-localhost:27017] 2016-07-20 16:25:33,213 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=701229}
+ INFO [main] 2016-07-20 16:25:33,219 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:7}] to localhost:27017
+ INFO [main] 2016-07-20 16:25:33,242 Main.java (line 45) insert db: { "_id" : { "$oid" : "578f42553f7c011b98f17336"} , "name" : "vuong" , "age" : 22}
+ INFO [Thread-0] 2016-07-20 16:28:23,754 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:28:24,040 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:28:24,266 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:28:28,409 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f443c3f7c011a2018ddba', description='null'}-localhost:27017] 2016-07-20 16:28:28,695 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:8}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f443c3f7c011a2018ddba', description='null'}-localhost:27017] 2016-07-20 16:28:28,696 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=465455}
+ INFO [main] 2016-07-20 16:28:34,415 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:9}] to localhost:27017
+ INFO [main] 2016-07-20 16:28:35,433 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f44433f7c011a2018ddbc', description='null'}-localhost:27017] 2016-07-20 16:28:35,453 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:3, serverValue:10}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f44433f7c011a2018ddbc', description='null'}-localhost:27017] 2016-07-20 16:28:35,455 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1184327}
+ INFO [main] 2016-07-20 16:28:35,480 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:4, serverValue:11}] to localhost:27017
+ INFO [main] 2016-07-20 16:28:58,952 Main.java (line 46) insert db: { "_id" : { "$oid" : "578f42553f7c011b98f17336"} , "name" : "vuong" , "age" : 22}{ "_id" : { "$oid" : "578f44423f7c011a2018ddbb"} , "name" : "vuong" , "age" : 22}
+ INFO [Thread-0] 2016-07-20 16:39:55,637 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:39:55,849 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:39:56,015 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:39:56,061 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ERROR [main] 2016-07-20 16:39:56,212 Main.java (line 53) Exception at startup: null
+ INFO [Thread-2] 2016-07-20 16:39:56,260 ContextHandler.java (line 832) stopped o.e.j.s.ServletContextHandler{/,null}
+ INFO [cluster-ClusterId{value='578f46ec3f7c011cccd84b53', description='null'}-localhost:27017] 2016-07-20 16:39:56,284 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:12}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f46ec3f7c011cccd84b53', description='null'}-localhost:27017] 2016-07-20 16:39:56,285 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=462889}
+ INFO [Thread-0] 2016-07-20 16:40:07,560 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:40:07,773 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:40:07,946 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:40:11,289 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f46fb3f7c011454d38c60', description='null'}-localhost:27017] 2016-07-20 16:40:11,585 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:13}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f46fb3f7c011454d38c60', description='null'}-localhost:27017] 2016-07-20 16:40:11,587 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1021049}
+ INFO [Thread-0] 2016-07-20 16:40:51,845 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 16:40:52,118 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 16:40:52,431 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 16:40:53,847 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [cluster-ClusterId{value='578f47253f7c0107583df68d', description='null'}-localhost:27017] 2016-07-20 16:40:54,130 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:14}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f47253f7c0107583df68d', description='null'}-localhost:27017] 2016-07-20 16:40:54,132 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1268692}
+ INFO [main] 2016-07-20 16:41:04,517 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:15}] to localhost:27017
+ INFO [main] 2016-07-20 16:41:15,737 Main.java (line 50) insert db: { "_id" : { "$oid" : "578f42553f7c011b98f17336"} , "name" : "vuong" , "age" : 22}{ "_id" : { "$oid" : "578f44423f7c011a2018ddbb"} , "name" : "vuong" , "age" : 22}{ "_id" : { "$oid" : "578f47303f7c0107583df68e"} , "name" : "vuong" , "age" : 22}
+ INFO [Thread-0] 2016-07-20 17:30:03,034 WebServer.java (line 44) get rest listen_port from zport=6969
+ INFO [Thread-0] 2016-07-20 17:30:03,217 Server.java (line 272) jetty-8.1.11.v20130520
+ INFO [Thread-0] 2016-07-20 17:30:03,377 AbstractConnector.java (line 338) Started SelectChannelConnector@0.0.0.0:6969
+ INFO [main] 2016-07-20 17:30:03,422 SLF4JLogger.java (line 71) Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+ INFO [main] 2016-07-20 17:30:03,519 SLF4JLogger.java (line 71) No server chosen by WritableServerSelector from cluster description ClusterDescription{type=UNKNOWN, connectionMode=SINGLE, all=[ServerDescription{address=localhost:27017, type=UNKNOWN, state=CONNECTING}]}. Waiting for 30000 ms before timing out
+ INFO [cluster-ClusterId{value='578f52ab3f7c011f1c70a0cd', description='null'}-localhost:27017] 2016-07-20 17:30:03,531 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:1, serverValue:19}] to localhost:27017
+ INFO [cluster-ClusterId{value='578f52ab3f7c011f1c70a0cd', description='null'}-localhost:27017] 2016-07-20 17:30:03,532 SLF4JLogger.java (line 71) Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 8]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=401298}
+ INFO [main] 2016-07-20 17:30:03,537 SLF4JLogger.java (line 71) Opened connection [connectionId{localValue:2, serverValue:20}] to localhost:27017
+ INFO [main] 2016-07-20 17:30:03,804 Main.java (line 50) insert db: { "_id" : { "$oid" : "578f52ab3f7c011f1c70a0ce"} , "name" : "vuong" , "time" : "now()"}

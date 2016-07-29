@@ -8,6 +8,10 @@ package me.service.helper;
 import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import me.service.model.NotSaveMySql;
+import net.spy.memcached.CASResponse;
+import net.spy.memcached.CASValue;
 import net.spy.memcached.MemcachedClient;
 import org.apache.log4j.Logger;
 
@@ -43,6 +47,28 @@ public class NotSaveMySqlMemcached {
         }catch(Exception ex){
             logger.error("NotSaveMySqlMemcached error: " + ex.getMessage());
             return new LinkedList();
+        }
+    }
+    public boolean AddNotSaveMySql(NotSaveMySql notSave){
+        try{
+            MemcachedClient mem = MemcacheHelper.GetInstance();
+            Queue queue = new LinkedList();;
+            CASValue casValue = mem.gets("queue");
+            if(casValue != null && !casValue.getValue().equals("")){
+                queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
+            }
+            queue.add(gson.toJson(notSave));
+            CASResponse casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+            while(!casresp.toString().equals("OK")){
+                casValue = mem.gets("queue");
+                queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
+                queue.add(gson.toJson(notSave));
+                casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+            }
+            return true;
+        }catch(Exception ex){
+            logger.error("SaveNotSaveMySqlQueue error: " + ex.getMessage());
+            return false;
         }
     }
 }

@@ -29,7 +29,9 @@ public class InsertController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){
         try {
+            long start = System.currentTimeMillis();
             String size = req.getParameter("size");
+            String result="";
             if(size != null){
                 NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                 resp.setStatus(200);
@@ -39,10 +41,13 @@ public class InsertController extends HttpServlet{
                     if(!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
                         logger.info("Don't insert record news: "+ gson.toJson(news));
                         resp.setStatus(500);
+                        result += "Request: "+i+" is status: 500" ;
+                    }else{
+                        result += "Request: "+i+" is status: 200" ;
                     }
                 }
-                
-                Utils.out("OK", resp);
+                Utils.out(result, resp);
+                logger.info("Thoi gian thuc hien insert size n=" + size + " la: "+(System.currentTimeMillis()-start));
             }
             else{
                 resp.setStatus(400);

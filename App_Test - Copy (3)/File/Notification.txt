@@ -1,0 +1,7 @@
+{
+"notification":[
+{"content":"Thay đổi thông tin chuyển khoản Sacombank của khu vực miền Nam","link":"http://esalev3.zing.vn/tintuc/chitiet.987.html"},
+{"content":"Bổ sung tính năng xác thực giao dịch qua thẻ ma trận","link":"http://esalev3.zing.vn/tintuc/chitiet.986.html"},
+{"content":"Từ <span>28 - 29/12/2014</span>, Viettel khuyến mãi 50% thẻ nạp cho thuê bao di động trả trước","link":"javascript:;"}
+]
+}

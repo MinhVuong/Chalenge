@@ -27,7 +27,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author sonnh4
+ * @author vuongtm
  */
 public class Main {
     
@@ -69,33 +69,13 @@ public class Main {
             }
             
             
-            
-            
-            //NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
-            //Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-            //String str = (String)notSaveMySql.poll();
-            //NotSaveMySql not = gson.fromJson(str, NotSaveMySql.class);
-            //LinkedTreeMap temp = (LinkedTreeMap)notSaveMySql.poll();
-            //Double cate = (Double)temp.get("category");
-            //NewsT news = (NewsT)temp.get("news");
-            
-            //notSaveMySql.add("vuong");
-            //notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
-            //notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-            //String temp = (String)notSaveMySql.poll();
-            //logger_.info("Object in Queue: "+temp);
-            
-            
             int size = NewsDAO.GetSizeIndexNews();            // Lay kich thuoc cua Table de lam khoa chinh--Fail
             SizeIndexMemcached.SaveSizeIndex(size);
             logger_.info("Size Request: "+size);
             // Start Thread Queue sau 30p chay 1 lan, de thuc hien cac thao tac khong dc voi MySql va dong bo Database.
-                     
-            //SynchThread synchThread = new SynchThread();
+           
             ThreadQueue threadQueue = new ThreadQueue();   
-            //synchThread.setPriority(6);
             threadQueue.setPriority(5);
-            //synchThread.start();
             threadQueue.start();
             
             // Asyn 2 DB after Start

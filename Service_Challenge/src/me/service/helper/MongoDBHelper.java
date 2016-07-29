@@ -29,8 +29,7 @@ public class MongoDBHelper {
             //DB db = (new  MongoClient("localhost", 27017)).getDB("demo");
             DB db = (new MongoClient(Arrays.asList(
                     new ServerAddress("localhost", 27017),
-                    new ServerAddress("localhost", 27018),
-                    new ServerAddress("localhost", 27019)))).getDB("demo");
+                    new ServerAddress("localhost", 27018)))).getDB("demo");
             dbCollection = db.getCollection("tabledemo");
             return true;
         }catch(Exception e){
