@@ -52,18 +52,22 @@ public class NotSaveMySqlMemcached {
     public boolean AddNotSaveMySql(NotSaveMySql notSave){
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
-            Queue queue = new LinkedList();;
+            Queue queue;
             CASValue casValue = mem.gets("queue");
-            if(casValue != null && !casValue.getValue().equals("")){
-                queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
-            }
-            queue.add(gson.toJson(notSave));
-            CASResponse casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
-            while(!casresp.toString().equals("OK")){
-                casValue = mem.gets("queue");
+            if(casValue == null || casValue.getValue().equals("")){
+                queue = new LinkedList();
+                queue.add(gson.toJson(notSave));
+                mem.set("queue", time, gson.toJson(queue));
+            }else{
                 queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
                 queue.add(gson.toJson(notSave));
-                casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+                CASResponse casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+                while(!casresp.toString().equals("OK")){
+                    casValue = mem.gets("queue");
+                    queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
+                    queue.add(gson.toJson(notSave));
+                    casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+                }
             }
             return true;
         }catch(Exception ex){

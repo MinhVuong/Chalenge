@@ -33,10 +33,10 @@ public class DBService {
             Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
             if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
             } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                //notSaveMySqlMemcached.AddNotSaveMySql(notSave);
-                notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                notSaveMySql.add(gson.toJson(notSave));
-                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+                notSaveMySqlMemcached.AddNotSaveMySql(notSave);
+                //notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+                //notSaveMySql.add(gson.toJson(notSave));
+                //notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
             }
             //SynchThread.synchDB.add(notSave);
             QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
