@@ -67,7 +67,7 @@ public class NotSaveMySqlMemcached {
             }
             return true;
         }catch(Exception ex){
-            logger.error("SaveNotSaveMySqlQueue error: " + ex.getMessage());
+            logger.error("SaveNotSaveMySqlQueue error: " + ex.getMessage(), ex);
             return false;
         }
     }

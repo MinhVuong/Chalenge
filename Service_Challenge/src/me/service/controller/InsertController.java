@@ -30,12 +30,12 @@ public class InsertController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){
         try {
             long start = System.currentTimeMillis();
-            String size = req.getParameter("size");
+            int size = Integer.parseInt(req.getParameter("size"));
             String result="";
-            if(size != null){
+            if(size>0){
                 NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                 resp.setStatus(200);
-                for(int i=0; i<Integer.parseInt(size); i++){
+                for(int i=0; i<size; i++){
                     int sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
                     News news = new News(sizeR, "Noi dung "+sizeR, 1, TimeHelper.GetTimeCurrent());
                     if(!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
@@ -55,6 +55,8 @@ public class InsertController extends HttpServlet{
             }
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
+            resp.setStatus(400);
+            Utils.out("size ko dc rong", resp);
         }
         
     }

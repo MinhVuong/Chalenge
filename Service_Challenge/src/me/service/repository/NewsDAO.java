@@ -33,7 +33,7 @@ public class NewsDAO {
             dBCollection.insert(bdb);
             return true;
         }catch(Exception e){
-            logger.error(e.getMessage());
+            logger.error("Mongo NewsDAO error: "+e.getMessage(), e);
             return false;
         }
     }
