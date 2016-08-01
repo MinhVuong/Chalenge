@@ -25,7 +25,7 @@ public class ThreadQueue extends Thread{
             try{
                 logger.info("thread is running...");
                 NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
-                Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+                Queue notSaveMySql = notSaveMySqlMemcached.GetBeforeAsynNotSaveMySqlQueue();
                 if(!notSaveMySql.isEmpty()){
                     if(MySQLHelper.StartConnectDatabase()){
                         Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
@@ -51,8 +51,9 @@ public class ThreadQueue extends Thread{
                         if(!notSaveMySql.isEmpty()){
                             temp = MergerTwoQueue(temp, notSaveMySql);
                         }
-                        notSaveMySqlMemcached.SaveNotSaveMySqlQueue(temp);
+                        notSaveMySqlMemcached.SaveAfterSynMySqlQueue(temp);
                     }else{
+                        notSaveMySqlMemcached.SaveAfterSynMySqlQueue(notSaveMySql);
                         logger.info("Thread: Don't connect to MySQL Database!!!");
                     }
                 }else{

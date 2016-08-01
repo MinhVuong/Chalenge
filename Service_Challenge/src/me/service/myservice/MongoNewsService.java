@@ -27,4 +27,10 @@ public class MongoNewsService {
     public List<News> GetNewFromTo(int from, int to){
         return mongoNewsD.GetNewFromTo(from, to);
     }
+    public boolean DeleteNews(News news){
+        return mongoNewsD.DeleteNews(news);
+    }
+    public boolean RetryUpdateStatus(int id){
+        return mongoNewsD.RetryUpdateStatus(id);
+    }
 }

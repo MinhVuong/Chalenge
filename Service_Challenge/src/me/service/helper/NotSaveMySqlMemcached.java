@@ -34,6 +34,38 @@ public class NotSaveMySqlMemcached {
             return false;
         }
     }
+    public boolean SaveAfterSynMySqlQueue(Queue queue){
+        try{
+            MemcachedClient mem = MemcacheHelper.GetInstance();
+            CASValue casValue = mem.gets("queue");
+            if(casValue == null || casValue.getValue().equals("")){
+                mem.set("queue", time, gson.toJson(queue));
+            }else{
+                Queue temp = gson.fromJson(casValue.getValue().toString(), Queue.class);
+                queue = MergerTwoQueue(queue, temp);
+                CASResponse casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+                while(!casresp.toString().equals("OK")){
+                    temp = gson.fromJson(casValue.getValue().toString(), Queue.class);
+                    queue = MergerTwoQueue(queue, temp);
+                    casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(queue));
+                }
+            }
+            return true;
+        }catch(Exception ex){
+            logger.error("SaveAfterSynMySqlQueue error: " + ex.getMessage());
+            return false;
+        }
+    }
+    public Queue MergerTwoQueue(Queue a, Queue b){
+        Queue result = a;
+        while(!b.isEmpty()){
+            String str = (String)b.poll();
+            NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);
+            result.add(gson.toJson(notSave));
+        }
+        return result;
+    }
+    
     
     public Queue GetNotSaveMySqlQueue(){
         try{
@@ -45,13 +77,36 @@ public class NotSaveMySqlMemcached {
                 return gson.fromJson(out, Queue.class);
             }
         }catch(Exception ex){
-            logger.error("NotSaveMySqlMemcached error: " + ex.getMessage());
+            logger.error("GetNotSaveMySqlQueue error: " + ex.getMessage());
             return new LinkedList();
         }
     }
+    
+    public Queue GetBeforeAsynNotSaveMySqlQueue(){
+        try{
+            MemcachedClient mem = MemcacheHelper.GetInstance();
+            CASValue casValue = mem.gets("queue");
+            if(casValue == null || casValue.getValue().equals("")){
+                return new LinkedList();
+            }else{
+                Queue empty = new LinkedList();
+                CASResponse casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(empty));
+                while(!casresp.toString().equals("OK")){
+                    casValue = mem.gets("queue");
+                    casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(empty));
+                }
+                return gson.fromJson(casValue.getValue().toString(), Queue.class);
+            }
+        }catch(Exception ex){
+            logger.error("GetBeforeAsynNotSaveMySqlQueue error: " + ex.getMessage());
+            return new LinkedList();
+        }
+    }
+    
     public boolean AddNotSaveMySql(NotSaveMySql notSave){
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
+            
             Queue queue;
             CASValue casValue = mem.gets("queue");
             if(casValue == null || casValue.getValue().equals("")){
@@ -71,7 +126,7 @@ public class NotSaveMySqlMemcached {
             }
             return true;
         }catch(Exception ex){
-            logger.error("SaveNotSaveMySqlQueue error: " + ex.getMessage(), ex);
+            logger.error("AddNotSaveMySql error: " + ex.getMessage(), ex);
             return false;
         }
     }

@@ -33,28 +33,35 @@ public class InsertController extends HttpServlet{
             int size = Integer.parseInt(req.getParameter("size"));
             String result="";
             if(size>0){
-                NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
-                resp.setStatus(200);
-                for(int i=0; i<size; i++){
-                    int sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
-                    News news = new News(sizeR, "Noi dung "+sizeR, 1, TimeHelper.GetTimeCurrent());
-                    if(!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
-                        logger.info("Don't insert record news: "+ gson.toJson(news));
-                        resp.setStatus(500);
-                        result += "Request: "+i+" is status: 500" ;
-                    }else{
-                        result += "Request: "+i+" is status: 200" ;
+                try{
+                    NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
+                    resp.setStatus(200);
+                    for(int i=0; i<size; i++){
+                        int sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
+                        News news = new News(sizeR, "Noi dung "+sizeR, 1, TimeHelper.GetTimeCurrent());
+                        if(!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)){
+                            logger.info("Don't insert record news: "+ gson.toJson(news));
+                            resp.setStatus(500);
+                            result += "Request: "+i+" is status: 500" ;
+                        }else{
+                            result += "Request: "+i+" is status: 200" ;
+                        }
                     }
+                    Utils.out(result, resp);
+                    logger.info("Status: "+resp.getStatus()+". Thoi gian thuc hien insert size n=" + size + " la: "+(System.currentTimeMillis()-start));
+                }catch(Exception ex){
+                    resp.setStatus(500);
+                    Utils.out(result, resp);
+                    logger.error("InsertController error: "+ex.getMessage(), ex);
                 }
-                Utils.out(result, resp);
-                logger.info("Thoi gian thuc hien insert size n=" + size + " la: "+(System.currentTimeMillis()-start));
             }
             else{
                 resp.setStatus(400);
                 Utils.out("size ko dc rong", resp);
+                logger.error(result);
             }
         } catch (Exception ex) {
-            logger.error(ex.getMessage(), ex);
+            logger.error("InsertController error: "+ex.getMessage(), ex);
             resp.setStatus(400);
             Utils.out("size ko dc rong", resp);
         }

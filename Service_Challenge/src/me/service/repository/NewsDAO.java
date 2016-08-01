@@ -113,4 +113,32 @@ public class NewsDAO {
             return new ArrayList<News>();
         }
     }
+    
+    public boolean DeleteNews(News news){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject bdb = new BasicDBObject();
+            bdb.put("id", news.getId());
+            dBCollection.remove(bdb);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+    
+    public boolean RetryUpdateStatus(int id){
+        try{
+            DBCollection dBCollection = MongoDBHelper.GetDBCollection();
+            BasicDBObject bdb = new BasicDBObject();
+            bdb.append("$set", new BasicDBObject().append("status", 1));
+            
+            BasicDBObject searchQuery = new BasicDBObject().append("id", id);
+            dBCollection.update(searchQuery, bdb);
+            
+            return true;
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            return false;
+        }    
+    }
 }
