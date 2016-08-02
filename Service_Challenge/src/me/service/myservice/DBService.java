@@ -28,39 +28,58 @@ public class DBService {
 
     public boolean InsertNewsTo2DB(News news, NotSaveMySqlMemcached notSaveMySqlMemcached) {
         NotSaveMySql notSave = new NotSaveMySql(1, news);
-        //if(QueueAfterMemcached.AddObjectToQueue(notSave)){          // Luu vao Cache de phong cup dien mk chua Sync
-            if (mongoS.InsertNews(news)) {
-                Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
-                } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                    if(!notSaveMySqlMemcached.AddNotSaveMySql(notSave)){
-                        mongoS.DeleteNews(news);
-                        //mysqlS.DeleteNews(news);
-                        return false;
-                    }
+        if (mongoS.InsertNews(news)) {
+            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+            if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
+            } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
+                if (!notSaveMySqlMemcached.AddNotSaveMySql(notSave)) {
+                    mongoS.DeleteNews(news);
+                    //mysqlS.DeleteNews(news);
+                    return false;
                 }
-                //SynchThread.synchDB.add(notSave);
-                //QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-                return true;
-            } else {
-                //QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-                logger.info("InsertNewsTo2DB error: don't insert data!!!");
-                return false;
             }
+            //SynchThread.synchDB.add(notSave);
+            //QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+            return true;
+        } else {
+            //QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+            logger.info("InsertNewsTo2DB error: don't insert data!!!");
+            return false;
+        }
+
+        /*if(QueueAfterMemcached.AddObjectToQueue(notSave)){          // Luu vao Cache de phong cup dien mk chua Sync
+         if (mongoS.InsertNews(news)) {
+         Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+         if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
+         } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
+         if(!notSaveMySqlMemcached.AddNotSaveMySql(notSave)){
+         mongoS.DeleteNews(news);
+         //mysqlS.DeleteNews(news);
+         return false;
+         }
+         }
+         //SynchThread.synchDB.add(notSave);
+         QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+         return true;
+         } else {
+         QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+         logger.info("InsertNewsTo2DB error: don't insert data!!!");
+         return false;
+         }
             
-        //}else{
-        //    return false;
-        //}
+         }else{
+         return false;
+         }*/
     }
-    
-    public boolean UpdateStatus2DB(int id, NotSaveMySqlMemcached notSaveMySqlMemcached){
+
+    public boolean UpdateStatus2DB(int id, NotSaveMySqlMemcached notSaveMySqlMemcached) {
         NotSaveMySql notSave = new NotSaveMySql(2, new News(id, "", 0, ""));
         QueueAfterMemcached.AddObjectToQueue(notSave);          // Luu vao Cache de phong cup dien mk chua Sync
-        if(mongoS.UpdateStatus(id)){
+        if (mongoS.UpdateStatus(id)) {
             Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-            if(notSaveMySql.isEmpty() && mysqlS.UpdateStatus(id)){
-            }else{                      // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                if(!notSaveMySqlMemcached.AddNotSaveMySql(notSave)){
+            if (notSaveMySql.isEmpty() && mysqlS.UpdateStatus(id)) {
+            } else {                      // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
+                if (!notSaveMySqlMemcached.AddNotSaveMySql(notSave)) {
                     mongoS.RetryUpdateStatus(id);
                     return false;
                 }
@@ -69,9 +88,9 @@ public class DBService {
                 //notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
             }
             //SynchThread.synchDB.add(notSave);
-            QueueAfterMemcached.SubObjectFromQueue();           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+            QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
             return true;
-        }else{
+        } else {
             return false;
         }
     }

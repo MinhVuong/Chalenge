@@ -22,11 +22,13 @@ public class MySQLNewsDAO {
     private Logger logger = Logger.getLogger(MySQLNewsDAO.class);
     public boolean InsertNews(News news){
         try{
+            long start = System.currentTimeMillis();
             Connection conn = MySQLHelper.getInstance();
             String sql = "insert into news(id, content, status, time) values(%d, '%s',%d, '%s')";
             sql = String.format(sql, news.getId(), news.getContent(), news.getStatus(), news.getTime());
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);
+            //logger.info("MySQL. Thoi gian insert 1 record: " + (System.currentTimeMillis()-start));
             return true;
         }catch(Exception ex){
             logger.error("InsertNews errors: "+ex.getMessage());

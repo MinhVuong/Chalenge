@@ -33,15 +33,21 @@ public class SizeIndexMemcached {
     
     public static int GetAndSaveSizeIndex(){
         try{
+            long start = System.currentTimeMillis();
             MemcachedClient mem = MemcacheHelper.GetInstance();
             CASValue casValue = mem.gets("indexR");
             int size = (int)casValue.getValue();
+            //if(size == -1){
+            //    Thread.sleep(1500);
+            //}
             CASResponse casresp = mem.cas("indexR", casValue.getCas(), time, ++size);
+           
             while(!casresp.toString().equals("OK")){
                 casValue = mem.gets("indexR");
                 size = (int)casValue.getValue();
                 casresp = mem.cas("indexR", casValue.getCas(), time, ++size);
             }
+            //logger.info("GetAndSaveSizeIndex Thoi gian lay index: " + (System.currentTimeMillis()-start));
             return size;            
         }catch(Exception ex){
             logger.error("GetAndSaveSizeIndex error: " + ex.getMessage());

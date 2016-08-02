@@ -56,12 +56,12 @@ public class Main {
             // Start REST service
             WebServer webserver = new WebServer();
             webserver.start();
-            if(!MongoDBHelper.ConnectionDatabase()){
+            if(!MongoDBHelper.ConnectionDatabase() || !MongoDBHelper.TestConnectionDatabase()){
                 logger_.error("Exception at startup: Don't connect to NoSQL MongoDB");
                 System.exit(3);
             }
             
-            if(!MySQLHelper.StartConnectDatabase()){
+            if(!MySQLHelper.StartConnectDatabase() || !MySQLHelper.TestConnectionDatabase()){
                 logger_.error("Exception at startup: Don't connect to MySQL");
                 System.exit(3);
             }

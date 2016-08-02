@@ -8,6 +8,8 @@ package me.service.helper;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import me.service.model.News;
+import me.service.myservice.MySqlNewsService;
 import org.apache.log4j.Logger;
 
 /**
@@ -59,6 +61,18 @@ public class MySQLHelper {
             }
         }else{
             return true;
+        }
+    }
+    public static boolean TestConnectionDatabase(){
+        try{
+            News news = new News(0, "", 1, "");
+            MySqlNewsService mySqlS = new MySqlNewsService();
+            if(!mySqlS.InsertNews(news) || !mySqlS.DeleteNews(news))
+                return false;
+            return true;
+        }catch(Exception e){
+            logger.info("TestConnectionDatabase MySql Error: " + e.getMessage());
+            return false;
         }
     }
 }

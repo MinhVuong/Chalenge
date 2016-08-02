@@ -24,6 +24,7 @@ public class NewsDAO {
     private Logger logger = Logger.getLogger(NewsDAO.class);
     public boolean InsertNews(News news){
         try{
+            long start = System.currentTimeMillis();
             DBCollection dBCollection = MongoDBHelper.GetDBCollection();
             BasicDBObject bdb = new BasicDBObject();
             bdb.put("id", news.getId());
@@ -31,6 +32,8 @@ public class NewsDAO {
             bdb.put("status", news.getStatus());
             bdb.put("time", TimeHelper.GetTimeCurrent());
             dBCollection.insert(bdb);
+            //logger.info("Mongo DB. Thoi gian insert 1 record: " + (System.currentTimeMillis()-start));
+            
             return true;
         }catch(Exception e){
             logger.error("Mongo NewsDAO error: "+e.getMessage(), e);

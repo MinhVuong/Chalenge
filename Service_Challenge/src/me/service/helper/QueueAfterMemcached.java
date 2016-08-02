@@ -45,6 +45,7 @@ public class QueueAfterMemcached {
                     casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
                 }
             }
+            //logger.info("size queue: " + queue.size());
             return true;
         }catch(Exception ex){
             logger.error("AddObjectToQueue error: " + ex.getMessage());
@@ -53,7 +54,7 @@ public class QueueAfterMemcached {
         
     }
     
-    public static boolean SubObjectFromQueue(){
+    public static boolean SubObjectFromQueue(String str){
         try{
             Queue queue = new LinkedList();
             MemcachedClient mem = MemcacheHelper.GetInstance();
@@ -65,7 +66,8 @@ public class QueueAfterMemcached {
                     casValue = mem.gets("queue_after");
                     queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
                     if(!queue.isEmpty()){
-                        queue.poll();
+                        //queue.poll();
+                        queue = RemoveObjectFromQueue(queue, str);
                         casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
                     }else{
                         break;
@@ -74,13 +76,15 @@ public class QueueAfterMemcached {
             }else{
                 queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
                 if(!queue.isEmpty()){
-                    queue.poll();
+                    //queue.poll();
+                    queue = RemoveObjectFromQueue(queue, str);
                     CASResponse casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
                     while(!casresp.toString().equals("OK")){
                         casValue = mem.gets("queue_after");
                         queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
                         if(!queue.isEmpty()){
-                            queue.poll();
+                            //queue.poll();
+                            queue = RemoveObjectFromQueue(queue, str);
                             casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
                         }else{
                             break;
@@ -93,6 +97,15 @@ public class QueueAfterMemcached {
             logger.error("SubObjectFromQueue error: " + ex.getMessage());
             return false;
         }
+    }
+    private static Queue RemoveObjectFromQueue(Queue queue, String scr){
+        Queue result = new LinkedList();
+        while(!queue.isEmpty()){
+            String str = (String)queue.poll();
+            if(!str.equals(queue))
+                result.add(str);
+        }
+        return result;
     }
     
     public static boolean SynTwoDataAfterStart(){
@@ -114,10 +127,11 @@ public class QueueAfterMemcached {
                     NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                     DBService dbS = new DBService();
                     while(notSave != null){
+                        //logger.info("ID Synch: "+notSave.getNews().getId());
                         switch(notSave.getCategory()){
                             case 1:{
                                 if(!mongoS.CheckInsertRecord(notSave.getNews())){       // Mongo CHUA thuc hien query
-                                    dbS.InsertNewsTo2DB(notSave.getNews(), notSaveMySqlMemcached);
+                                   // dbS.InsertNewsTo2DB(notSave.getNews(), notSaveMySqlMemcached);
                                 }else if(!mySqlS.CheckInsertRecord(notSave.getNews())){                                                  // Mongo da thuc hien Quey
                                     mySqlS.InsertNews(notSave.getNews());
                                 }
@@ -131,6 +145,7 @@ public class QueueAfterMemcached {
                         str = (String)queue.poll();
                         notSave = gson.fromJson(str, NotSaveMySql.class);
                     }
+                    
                 }
             }
             return true;

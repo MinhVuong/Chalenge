@@ -10,6 +10,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 import java.util.Arrays;
+import me.service.model.News;
+import me.service.myservice.MongoNewsService;
 import org.apache.log4j.Logger;
 
 /**
@@ -31,9 +33,24 @@ public class MongoDBHelper {
                     new ServerAddress("localhost", 27017),
                     new ServerAddress("localhost", 27018)))).getDB("demo");
             dbCollection = db.getCollection("tabledemo");
+            
             return true;
         }catch(Exception e){
             logger.info("Connect MongoDB Error: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public static boolean TestConnectionDatabase()
+    {
+        try{
+            News news = new News(0, "", 1, "");
+            MongoNewsService mongoS = new MongoNewsService();
+            if(!mongoS.InsertNews(news) || !mongoS.DeleteNews(news))
+                return false;
+            return true;
+        }catch(Exception e){
+            logger.info("TestConnectionDatabase Error: " + e.getMessage());
             return false;
         }
     }
