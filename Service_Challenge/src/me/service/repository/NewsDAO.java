@@ -120,6 +120,7 @@ public class NewsDAO {
             BasicDBObject bdb = new BasicDBObject();
             bdb.put("id", news.getId());
             dBCollection.remove(bdb);
+            logger.info("delete news id: " + news.getId());
             return true;
         }catch(Exception e){
             return false;

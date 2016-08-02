@@ -23,5 +23,8 @@ public class MySqlNewsService {
     public boolean UpdateStatus(int id){
         return mysqlNewsD.UpdateStatus(id);
     }
+     public boolean DeleteNews(News news){
+        return mysqlNewsD.DeleteNews(news);
+    }
     
 }

@@ -86,4 +86,18 @@ public class MySQLNewsDAO {
             return null;
         }
     }
+    public boolean DeleteNews(News news){
+        try{
+            Connection conn = MySQLHelper.getInstance();
+            String sql = "delete from news where id = %d";
+            sql = String.format(sql, news.getId());
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception ex){
+            logger.error("InsertNews errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
+            return false;
+        }
+    }
 }

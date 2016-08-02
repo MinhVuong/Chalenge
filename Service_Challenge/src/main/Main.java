@@ -22,6 +22,8 @@ import me.service.helper.SynchThread;
 import me.service.helper.ThreadQueue;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
+import me.service.myservice.MongoNewsService;
+import me.service.myservice.MySqlNewsService;
 import me.service.repository.NewsDAO;
 import org.apache.log4j.Logger;
 
@@ -86,7 +88,8 @@ public class Main {
                 System.exit(3);
             }
             logger_.info("Started Application!!!");
-
+            //MySqlNewsService mongoS = new MySqlNewsService();
+           // mongoS.DeleteNews(new News(1, "", 1, ""));
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());
             System.exit(3);

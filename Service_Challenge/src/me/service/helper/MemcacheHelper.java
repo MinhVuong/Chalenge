@@ -35,7 +35,8 @@ public class MemcacheHelper {
             if(memcache == null)
                 return false;
             
-            
+            memcache.set("vuong", 0, "vuong");
+            String str = (String)memcache.get("vuong");
             return true;
         } catch (IOException e) {
             // TODO Auto-generated catch block

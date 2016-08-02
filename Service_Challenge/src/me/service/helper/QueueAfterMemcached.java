@@ -33,13 +33,7 @@ public class QueueAfterMemcached {
              if(casValue == null || casValue.getValue().equals("")){
                 queue = new LinkedList();
                 queue.add(gson.toJson(notSave));
-                CASResponse casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
-                while(!casresp.toString().equals("OK")){
-                    casValue = mem.gets("queue_after");
-                    queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
-                    queue.add(gson.toJson(notSave));
-                    casresp = mem.cas("queue_after", casValue.getCas(), time, gson.toJson(queue));
-                }
+                mem.set("queue_after", time, gson.toJson(queue));
             }else{
                 queue = gson.fromJson(casValue.getValue().toString(), Queue.class);
                 queue.add(gson.toJson(notSave));

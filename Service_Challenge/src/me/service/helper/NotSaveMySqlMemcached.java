@@ -35,6 +35,9 @@ public class NotSaveMySqlMemcached {
         }
     }
     public boolean SaveAfterSynMySqlQueue(Queue queue){
+        if(queue.isEmpty())
+            return true;
+        else{
         try{
             MemcachedClient mem = MemcacheHelper.GetInstance();
             CASValue casValue = mem.gets("queue");
@@ -54,7 +57,7 @@ public class NotSaveMySqlMemcached {
         }catch(Exception ex){
             logger.error("SaveAfterSynMySqlQueue error: " + ex.getMessage());
             return false;
-        }
+        }}
     }
     public Queue MergerTwoQueue(Queue a, Queue b){
         Queue result = a;
@@ -95,6 +98,7 @@ public class NotSaveMySqlMemcached {
                     casValue = mem.gets("queue");
                     casresp = mem.cas("queue", casValue.getCas(), time, gson.toJson(empty));
                 }
+                //mem.delete("queue");
                 return gson.fromJson(casValue.getValue().toString(), Queue.class);
             }
         }catch(Exception ex){

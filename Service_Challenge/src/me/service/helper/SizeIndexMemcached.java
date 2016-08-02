@@ -45,7 +45,7 @@ public class SizeIndexMemcached {
             return size;            
         }catch(Exception ex){
             logger.error("GetAndSaveSizeIndex error: " + ex.getMessage());
-            return 0;
+            return -1;
         }
     }
     

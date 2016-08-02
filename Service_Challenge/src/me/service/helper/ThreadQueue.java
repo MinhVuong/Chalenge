@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.Queue;
 import me.service.model.NotSaveMySql;
+import me.service.myservice.MongoNewsService;
 import me.service.myservice.MySqlNewsService;
 import org.apache.log4j.Logger;
 
@@ -51,9 +52,11 @@ public class ThreadQueue extends Thread{
                         if(!notSaveMySql.isEmpty()){
                             temp = MergerTwoQueue(temp, notSaveMySql);
                         }
-                        notSaveMySqlMemcached.SaveAfterSynMySqlQueue(temp);
+                        if(!notSaveMySqlMemcached.SaveAfterSynMySqlQueue(temp))
+                            DeleteMySqlQueueNotSynMySql(temp);
                     }else{
-                        notSaveMySqlMemcached.SaveAfterSynMySqlQueue(notSaveMySql);
+                        if(!notSaveMySqlMemcached.SaveAfterSynMySqlQueue(notSaveMySql))
+                            DeleteMySqlQueueNotSynMySql(notSaveMySql);
                         logger.info("Thread: Don't connect to MySQL Database!!!");
                     }
                 }else{
@@ -75,5 +78,25 @@ public class ThreadQueue extends Thread{
             result.add(gson.toJson(notSave));
         }
         return result;
+    }
+    
+    public void DeleteMySqlQueueNotSynMySql(Queue queue){
+        MongoNewsService mongoS = new MongoNewsService();
+        MySqlNewsService mySqlS = new MySqlNewsService();
+        while(!queue.isEmpty()){
+            String str = (String)queue.poll();
+            NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);
+            switch(notSave.getCategory()){
+                case 1:{
+                    mongoS.DeleteNews(notSave.getNews());
+                    //mySqlS.DeleteNews(notSave.getNews());
+                    break;
+                }
+                case 2:{
+                    mongoS.RetryUpdateStatus(notSave.getNews().getId());
+                    break;
+                }
+            }
+        }
     }
 }
