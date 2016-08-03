@@ -17,6 +17,8 @@ public class TimeHelper {
     public static String GetTimeCurrent(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        return dateFormat.format(date);
+        String str = dateFormat.format(date);
+        
+        return str;
     }
 }

@@ -6,8 +6,13 @@
 package me.service.helper;
 
 import com.google.gson.Gson;
+import java.io.File;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.regex.Pattern;
+import me.service.model.CutSynch;
+import me.service.model.News;
 import me.service.model.NotSaveMySql;
 import me.service.myservice.MongoNewsService;
 import me.service.myservice.MySqlNewsService;
@@ -25,39 +30,33 @@ public class ThreadQueue extends Thread{
         while(true){
             try{
                 logger.info("thread is running...");
-                NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
-                Queue notSaveMySql = notSaveMySqlMemcached.GetBeforeAsynNotSaveMySqlQueue();
-                if(!notSaveMySql.isEmpty()){
+                File[] files = FileHelper.ReadAllFileNews();
+                if(files != null && files.length>0){
                     if(MySQLHelper.StartConnectDatabase()){
-                        Queue temp = new LinkedList();      // De luu lai cac thao tac van thuc hien khong duoc.
-                        String str = (String)notSaveMySql.poll();
-                        NotSaveMySql notSave = gson.fromJson(str, NotSaveMySql.class);       // Get phan tu dau tien trong Queue va xoa luon trong Queue
-                        while(notSave != null && MySQLHelper.connect==true){             // Thuc hien cho den khi nao trong Queue het phan tu.
-                            MySqlNewsService mySqlS = new MySqlNewsService();
-                            switch(notSave.getCategory()){
-                                case 1:{
-                                    if(!mySqlS.InsertNews(notSave.getNews()))       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
-                                        temp.add(gson.toJson(notSave));
-                                    break;
-                                }
-                                case 2:{
-                                    if(!mySqlS.UpdateStatus(notSave.getNews().getId()))
-                                        temp.add(gson.toJson(notSave));
-                                    break;
+                        MySqlNewsService mySqlS = new MySqlNewsService();
+                        for(File file : files){
+                            NotSaveMySql notS = GetNotSaveMySqlFromFile(file.getName());
+                            if(notS != null && MySQLHelper.connect){
+                                switch(notS.getCategory()){
+                                    case 1:{
+                                        if(mySqlS.InsertNews(notS.getNews())){       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
+                                            if(!FileHelper.SubFileNews(notS)){
+                                                //mySqlS.DeleteNews(notS.getNews());
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 2:{
+                                        if(mySqlS.UpdateStatus(notS.getNews().getId())){
+                                            FileHelper.SubFileNews(notS);
+                                        }
+                                        break;
+                                    }
                                 }
                             }
-                            str = (String)notSaveMySql.poll();
-                            notSave = gson.fromJson(str, NotSaveMySql.class);           // Lay phan tu dau tien cua Queue va xoa luon trong Queue
                         }
-                        if(!notSaveMySql.isEmpty()){
-                            temp = MergerTwoQueue(temp, notSaveMySql);
-                        }
-                        if(!notSaveMySqlMemcached.SaveAfterSynMySqlQueue(temp))
-                            DeleteMySqlQueueNotSynMySql(temp);
                     }else{
-                        if(!notSaveMySqlMemcached.SaveAfterSynMySqlQueue(notSaveMySql))
-                            DeleteMySqlQueueNotSynMySql(notSaveMySql);
-                        logger.info("Thread: Don't connect to MySQL Database!!!");
+                        logger.info("Thread Queue: Don't connect to MySQL Database!!!");
                     }
                 }else{
                     logger.info("Not Save MySql Queue Empty!!!");
@@ -69,6 +68,33 @@ public class ThreadQueue extends Thread{
         }
         
     }  
+    
+    private NotSaveMySql GetNotSaveMySqlFromFile(String str){
+        try{
+            NotSaveMySql notSave = new NotSaveMySql();
+            String[] arr = str.split(Pattern.quote("."));
+            String[] arr1 = arr[0].split("_");
+            String temp = arr1[2];
+            temp = temp.replace("-", "/");
+            temp = temp.replace("+", ":");
+            switch(Integer.parseInt(arr1[0])){
+                case 1:{
+                    News news = new News(Integer.parseInt(arr1[1]), "Noi dung "+arr1[1], 1, temp);
+                    notSave = new NotSaveMySql(1, news);
+                    break;
+                }
+                case 2:{
+                    News news = new News(Integer.parseInt(arr1[1]), "Noi dung "+arr1[1], 0, temp);
+                    notSave = new NotSaveMySql(2, news);
+                    break;
+                }
+            }
+            return notSave;
+        }catch(Exception ex){
+            logger.error("CutContentGetCutDynch error: " + ex.getMessage(), ex);
+            return null;
+        }
+    }
     
     public Queue MergerTwoQueue(Queue a, Queue b){
         Queue result = a;

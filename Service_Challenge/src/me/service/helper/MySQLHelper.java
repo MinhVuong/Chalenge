@@ -72,6 +72,7 @@ public class MySQLHelper {
             return true;
         }catch(Exception e){
             logger.info("TestConnectionDatabase MySql Error: " + e.getMessage());
+            connect = false;
             return false;
         }
     }

@@ -10,7 +10,6 @@ import esale.frontend.common.Utils;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import me.service.helper.NotSaveMySqlMemcached;
 import me.service.helper.SizeIndexMemcached;
 import me.service.helper.TimeHelper;
 import me.service.model.News;
@@ -35,7 +34,6 @@ public class InsertController extends HttpServlet {
             String result = "";
             if (size > 0) {
                 try {
-                    NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                     resp.setStatus(200);
                     for (int i = 0; i < size; i++) {
                         int sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
@@ -44,7 +42,7 @@ public class InsertController extends HttpServlet {
                             sizeR = SizeIndexMemcached.GetAndSaveSizeIndex();
                         }
                         News news = new News(sizeR, "Noi dung " + sizeR, 1, TimeHelper.GetTimeCurrent());
-                        if (!dbS.InsertNewsTo2DB(news, notSaveMySqlMemcached)) {
+                        if (!dbS.InsertNewsTo2DB(news)) {
                             logger.info("Don't insert record news: " + gson.toJson(news));
                             resp.setStatus(500);
                             result += "Request: " + i + " is status: 500";

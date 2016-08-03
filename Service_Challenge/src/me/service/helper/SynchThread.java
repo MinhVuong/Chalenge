@@ -23,7 +23,7 @@ public class SynchThread extends Thread {
     Gson gson = new Gson();
     public static Queue synchDB = new LinkedList();
     MySqlNewsService mySqlS = new MySqlNewsService();
-    NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
+    //NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
     public void run() {
         while(true){
             try {
@@ -34,21 +34,21 @@ public class SynchThread extends Thread {
                     //logger.info("SynchThread not empty");
                     switch (notSave.getCategory()) {
                         case 1: {
-                            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                            if (notSaveMySql.isEmpty() && mySqlS.InsertNews(notSave.getNews())){ // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
-                            }else{
-                                notSaveMySql.add(gson.toJson(notSave));
-                                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
-                            }
+                            //Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+                            //if (notSaveMySql.isEmpty() && mySqlS.InsertNews(notSave.getNews())){ // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
+                            //}else{
+                            //    notSaveMySql.add(gson.toJson(notSave));
+                            //    notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+                            //}
                             break;
                         }
                         case 2: {
-                            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                            if (notSaveMySql.isEmpty() && mySqlS.UpdateStatus(notSave.getNews().getId())) {
-                            }else{
-                                notSaveMySql.add(gson.toJson(notSave));
-                                notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
-                            }
+                            //Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
+                            //if (notSaveMySql.isEmpty() && mySqlS.UpdateStatus(notSave.getNews().getId())) {
+                            //}else{
+                            //    notSaveMySql.add(gson.toJson(notSave));
+                            //    notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+                            //}
                             break;
                         }
                     }
@@ -57,6 +57,7 @@ public class SynchThread extends Thread {
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(SynchThread.class.getName()).log(Level.SEVERE, null, ex);
             }
+    
         }
     }
 }

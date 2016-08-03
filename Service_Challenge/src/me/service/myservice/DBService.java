@@ -6,11 +6,8 @@
 package me.service.myservice;
 
 import com.google.gson.Gson;
-import java.util.Queue;
-import java.util.logging.Level;
-import me.service.helper.NotSaveMySqlMemcached;
-import me.service.helper.QueueAfterMemcached;
-import me.service.helper.SynchThread;
+import me.service.helper.FileHelper;
+import me.service.helper.MySQLHelper;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
 import org.apache.log4j.Logger;
@@ -26,71 +23,50 @@ public class DBService {
     MySqlNewsService mysqlS = new MySqlNewsService();
     Gson gson = new Gson();
 
-    public boolean InsertNewsTo2DB(News news, NotSaveMySqlMemcached notSaveMySqlMemcached) {
+    public boolean InsertNewsTo2DB(News news) {
         NotSaveMySql notSave = new NotSaveMySql(1, news);
-        if (mongoS.InsertNews(news)) {
-            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-            if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
-            } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                if (!notSaveMySqlMemcached.AddNotSaveMySql(notSave)) {
-                    mongoS.DeleteNews(news);
-                    //mysqlS.DeleteNews(news);
-                    return false;
+        if(FileHelper.AddFileNews(notSave)){
+            if (mongoS.InsertNews(news)) {
+                if (mysqlS.InsertNews(news)) {
+                    if(!FileHelper.SubFileNews(notSave)){
+                        //mongoS.DeleteNews(news);
+                        //mysqlS.DeleteNews(news);
+                        return false;
+                    }
                 }
+                return true;
+            } else {
+                FileHelper.SubFileNews(notSave);                                           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+                logger.info("InsertNewsTo2DB error: don't insert data!!!");
+                return false;
             }
-            //SynchThread.synchDB.add(notSave);
-            //QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-            return true;
-        } else {
-            //QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+        }else{
+            FileHelper.SubFileNews(notSave);
             logger.info("InsertNewsTo2DB error: don't insert data!!!");
             return false;
         }
-
-        /*if(QueueAfterMemcached.AddObjectToQueue(notSave)){          // Luu vao Cache de phong cup dien mk chua Sync
-         if (mongoS.InsertNews(news)) {
-         Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-         if (notSaveMySql.isEmpty() && mysqlS.InsertNews(news)) {
-         } else {                    // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-         if(!notSaveMySqlMemcached.AddNotSaveMySql(notSave)){
-         mongoS.DeleteNews(news);
-         //mysqlS.DeleteNews(news);
-         return false;
-         }
-         }
-         //SynchThread.synchDB.add(notSave);
-         QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-         return true;
-         } else {
-         QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-         logger.info("InsertNewsTo2DB error: don't insert data!!!");
-         return false;
-         }
-            
-         }else{
-         return false;
-         }*/
     }
 
-    public boolean UpdateStatus2DB(int id, NotSaveMySqlMemcached notSaveMySqlMemcached) {
+    public boolean UpdateStatus2DB(int id) {
         NotSaveMySql notSave = new NotSaveMySql(2, new News(id, "", 0, ""));
-        QueueAfterMemcached.AddObjectToQueue(notSave);          // Luu vao Cache de phong cup dien mk chua Sync
-        if (mongoS.UpdateStatus(id)) {
-            Queue notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-            if (notSaveMySql.isEmpty() && mysqlS.UpdateStatus(id)) {
-            } else {                      // Neu insert MySql khong thanh cong thi se luu lai vao Queue de Sau nay co the thao tac lai.
-                if (!notSaveMySqlMemcached.AddNotSaveMySql(notSave)) {
-                    mongoS.RetryUpdateStatus(id);
-                    return false;
+        if(FileHelper.AddFileNews(notSave)){
+            if (mongoS.UpdateStatus(id)) {
+                if (MySQLHelper.connect && mysqlS.UpdateStatus(id)) {
+                    if(!FileHelper.SubFileNews(notSave)){
+                        mongoS.RetryUpdateStatus(id);
+                        mysqlS.RetryUpdateStatus(id);
+                        return false;
+                    }
                 }
-                //notSaveMySql = notSaveMySqlMemcached.GetNotSaveMySqlQueue();
-                //notSaveMySql.add(gson.toJson(notSave));
-                //notSaveMySqlMemcached.SaveNotSaveMySqlQueue(notSaveMySql);
+                return true;
+            }else {
+                FileHelper.SubFileNews(notSave);                                           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
+                logger.info("UpdateStatus2DB error: don't update data!!!");
+                return false;
             }
-            //SynchThread.synchDB.add(notSave);
-            QueueAfterMemcached.SubObjectFromQueue(gson.toJson(notSave));           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-            return true;
-        } else {
+        }else{
+            FileHelper.SubFileNews(notSave);
+            logger.info("UpdateStatus2DB error: don't update data!!!");
             return false;
         }
     }

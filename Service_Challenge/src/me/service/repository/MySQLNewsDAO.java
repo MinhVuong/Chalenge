@@ -5,6 +5,7 @@
  */
 package me.service.repository;
 
+import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -20,6 +21,7 @@ import org.apache.log4j.Logger;
  */
 public class MySQLNewsDAO {
     private Logger logger = Logger.getLogger(MySQLNewsDAO.class);
+
     public boolean InsertNews(News news){
         try{
             long start = System.currentTimeMillis();
@@ -31,6 +33,7 @@ public class MySQLNewsDAO {
             //logger.info("MySQL. Thoi gian insert 1 record: " + (System.currentTimeMillis()-start));
             return true;
         }catch(Exception ex){
+            logger.info("InsertNews don't insert recored News: " + news.toString());
             logger.error("InsertNews errors: "+ex.getMessage());
             MySQLHelper.connect = false;
             return false;
@@ -63,6 +66,7 @@ public class MySQLNewsDAO {
             stmt.executeUpdate(sql);
             return true;
         }catch(Exception ex){
+            logger.info("UpdateStatus don't update recored News ID: " + id);
             logger.error("UpdateStatus errors: "+ex.getMessage());
             MySQLHelper.connect = false;
             return false;
@@ -95,9 +99,26 @@ public class MySQLNewsDAO {
             sql = String.format(sql, news.getId());
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);
+            logger.info("delete news id: " + news.getId());
             return true;
         }catch(Exception ex){
-            logger.error("InsertNews errors: "+ex.getMessage());
+            logger.error("DeleteNews errors: "+ex.getMessage());
+            MySQLHelper.connect = false;
+            return false;
+        }
+    }
+    
+    public boolean RetryUpdateStatus(int id){
+        try{
+            Connection conn = MySQLHelper.getInstance();
+            String sql = "update news set status=1 where id=%d";
+            sql = String.format(sql, id);
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception ex){
+            logger.info("UpdateStatus don't update recored News ID: " + id);
+            logger.error("UpdateStatus errors: "+ex.getMessage());
             MySQLHelper.connect = false;
             return false;
         }

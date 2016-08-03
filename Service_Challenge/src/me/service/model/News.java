@@ -56,5 +56,11 @@ public class News {
     public void setTime(String time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "News{" + "id=" + id + ", content=" + content + ", status=" + status + ", time=" + time + '}';
+    }
+    
     
 }

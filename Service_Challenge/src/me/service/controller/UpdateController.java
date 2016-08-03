@@ -11,7 +11,6 @@ import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import me.service.helper.NotSaveMySqlMemcached;
 import me.service.model.News;
 import me.service.myservice.DBService;
 import me.service.myservice.MongoNewsService;
@@ -35,9 +34,8 @@ public class UpdateController extends HttpServlet{
             String from = req.getParameter("from");
             String to = req.getParameter("to");
             if(id != null){
-                NotSaveMySqlMemcached notSaveMySqlMemcached = new NotSaveMySqlMemcached();
                 resp.setStatus(200);
-                if(!dbS.UpdateStatus2DB(Integer.parseInt(id), notSaveMySqlMemcached))
+                if(!dbS.UpdateStatus2DB(Integer.parseInt(id)))
                     resp.setStatus(500);
                 
                 List<News> newss = mongoS.GetNewFromTo(Integer.parseInt(from), Integer.parseInt(to));
