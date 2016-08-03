@@ -66,14 +66,14 @@ public class Main {
             SizeIndexMemcached.SaveSizeIndex(size);
             logger_.info("Size Request: "+size);
             
+            ThreadQueue threadQueue = new ThreadQueue();   
+            threadQueue.setPriority(5);
+            threadQueue.start();
+            
             if(!FileHelper.SynTwoDataAfterStart()){
                 logger_.error("Exception at startup: Don't synch data 2 Database !");
                 System.exit(3);
             }
-           
-            ThreadQueue threadQueue = new ThreadQueue();   
-            threadQueue.setPriority(5);
-            threadQueue.start();
             
         } catch (Throwable e) {
             logger_.error("Exception at startup: " + e.getMessage());

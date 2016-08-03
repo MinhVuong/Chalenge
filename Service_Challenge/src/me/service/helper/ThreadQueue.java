@@ -7,11 +7,8 @@ package me.service.helper;
 
 import com.google.gson.Gson;
 import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.regex.Pattern;
-import me.service.model.CutSynch;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
 import me.service.myservice.MongoNewsService;
@@ -30,7 +27,7 @@ public class ThreadQueue extends Thread{
         while(true){
             try{
                 logger.info("thread is running...");
-                File[] files = FileHelper.ReadAllFileNews();
+                File[] files = FileThreadHelper.ReadAllFileNewsNotSaveMySql();
                 if(files != null && files.length>0){
                     if(MySQLHelper.StartConnectDatabase()){
                         MySqlNewsService mySqlS = new MySqlNewsService();
@@ -40,15 +37,15 @@ public class ThreadQueue extends Thread{
                                 switch(notS.getCategory()){
                                     case 1:{
                                         if(mySqlS.InsertNews(notS.getNews())){       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
-                                            if(!FileHelper.SubFileNews(notS)){
-                                                //mySqlS.DeleteNews(notS.getNews());
+                                            if(!FileThreadHelper.SubFileNewsNotSaveMySql(notS)){
+                                                mySqlS.DeleteNews(notS.getNews());
                                             }
                                         }
                                         break;
                                     }
                                     case 2:{
                                         if(mySqlS.UpdateStatus(notS.getNews().getId())){
-                                            FileHelper.SubFileNews(notS);
+                                            FileThreadHelper.SubFileNewsNotSaveMySql(notS);
                                         }
                                         break;
                                     }

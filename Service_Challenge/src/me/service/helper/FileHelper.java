@@ -25,6 +25,7 @@ public class FileHelper {
 
     private static Logger logger = Logger.getLogger(FileHelper.class);
     private static String folderName = "synch";
+    private static String folderName_thread = "synch_thread";
 
     public static boolean AddFileNews(NotSaveMySql notSave) {
         try {
@@ -59,7 +60,12 @@ public class FileHelper {
                 return true;
             } else {
                 logger.info("Khong xoa duoc file----------------------------------");
-                return false;
+                //Thread.sleep(100);
+                if(file.exists()){
+                    return false;
+                }else
+                    return true;
+                
             }
         } catch (Exception ex) {
             logger.error("SubFileNews error: " + ex.getMessage(), ex);
@@ -94,7 +100,7 @@ public class FileHelper {
                         switch (notS.getCategory()) {
                             case 1: {
                                 if(mongoS.CheckInsertRecord(notS.getNews())){
-                                    if (mySqlS.InsertNews(notS.getNews())) {       // Neu khong thuc hien duoc thi phai luu lai de lan sau thuc hien
+                                    if (mySqlS.InsertNews(notS.getNews())) {      
                                         if (!FileHelper.SubFileNews(notS)) {
                                             mySqlS.DeleteNews(notS.getNews());
                                             mongoS.DeleteNews(notS.getNews());

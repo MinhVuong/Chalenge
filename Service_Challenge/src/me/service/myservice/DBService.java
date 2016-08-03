@@ -7,6 +7,7 @@ package me.service.myservice;
 
 import com.google.gson.Gson;
 import me.service.helper.FileHelper;
+import me.service.helper.FileThreadHelper;
 import me.service.helper.MySQLHelper;
 import me.service.model.News;
 import me.service.model.NotSaveMySql;
@@ -25,26 +26,26 @@ public class DBService {
 
     public boolean InsertNewsTo2DB(News news) {
         NotSaveMySql notSave = new NotSaveMySql(1, news);
+        boolean flag = true;
         if(FileHelper.AddFileNews(notSave)){
             if (mongoS.InsertNews(news)) {
-                if (mysqlS.InsertNews(news)) {
-                    if(!FileHelper.SubFileNews(notSave)){
-                        //mongoS.DeleteNews(news);
-                        //mysqlS.DeleteNews(news);
-                        return false;
+                if (!MySQLHelper.connect || !mysqlS.InsertNews(news)) {
+                    if(!FileThreadHelper.AddFileNewsNotSaveMySql(notSave)){
+                        mongoS.DeleteNews(news);
+                        flag = false;
                     }
                 }
-                return true;
+                FileHelper.SubFileNews(notSave);
             } else {
                 FileHelper.SubFileNews(notSave);                                           // Xoa doi tuong da luu trong Cache vi 2 DB da Sync
-                logger.info("InsertNewsTo2DB error: don't insert data!!!");
-                return false;
+                logger.info("InsertNewsTo2DB error: don't insert data in MongoDB!!!");
+                flag = false;
             }
         }else{
-            FileHelper.SubFileNews(notSave);
-            logger.info("InsertNewsTo2DB error: don't insert data!!!");
-            return false;
+            logger.info("InsertNewsTo2DB error: don't add file data!!!");
+            flag = false;
         }
+        return flag;
     }
 
     public boolean UpdateStatus2DB(int id) {

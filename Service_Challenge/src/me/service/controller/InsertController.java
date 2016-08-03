@@ -51,7 +51,7 @@ public class InsertController extends HttpServlet {
                         }
                     }
                     Utils.out(result, resp);
-                    logger.info("Status: " + resp.getStatus() + ". Thoi gian thuc hien insert size n=" + size + " la: " + (System.currentTimeMillis() - start));
+                    //logger.info("Status: " + resp.getStatus() + ". Thoi gian thuc hien insert size n=" + size + " la: " + (System.currentTimeMillis() - start));
                 } catch (Exception ex) {
                     resp.setStatus(500);
                     Utils.out(result, resp);
