@@ -100,17 +100,27 @@ public class FileHelper {
                         switch (notS.getCategory()) {
                             case 1: {
                                 if(mongoS.CheckInsertRecord(notS.getNews())){
-                                    if (mySqlS.InsertNews(notS.getNews())) {      
+                                    if(!mySqlS.CheckInsertRecord(notS.getNews())){
+                                        if (mySqlS.InsertNews(notS.getNews())) {      
+                                            if (!FileHelper.SubFileNews(notS)) {
+                                                mySqlS.DeleteNews(notS.getNews());
+                                                mongoS.DeleteNews(notS.getNews());
+                                                logger.error("Khong the xoa file synch!!!!");
+                                                flag = false;
+                                            }
+                                        }else{
+                                            logger.error("Khong insert duoc MySql!!!!");
+                                            flag = false;
+                                        }
+                                    }else{
                                         if (!FileHelper.SubFileNews(notS)) {
                                             mySqlS.DeleteNews(notS.getNews());
                                             mongoS.DeleteNews(notS.getNews());
                                             logger.error("Khong the xoa file synch!!!!");
                                             flag = false;
                                         }
-                                    }else{
-                                        logger.error("Khong insert duoc MySql!!!!");
-                                        flag = false;
                                     }
+                                    
                                 }else{
                                     if (!FileHelper.SubFileNews(notS)) {
                                         logger.error("Khong the xoa file synch!!!!");
